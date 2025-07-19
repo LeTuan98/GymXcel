@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Dashboard - EliteGym</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="dashboard-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar dashboard-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <span class="logo-elite">ELITE</span><span class="logo-gym">GYM</span>
+                </a>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="#dashboard" class="nav-link active">Dashboard</a>
+                <a href="#workouts" class="nav-link">My Workouts</a>
+                <a href="#classes" class="nav-link">Classes</a>
+                <a href="#nutrition" class="nav-link">Nutrition</a>
+                <a href="#progress" class="nav-link">Progress</a>
+                <a href="#community" class="nav-link">Community</a>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="member-profile" id="member-profile">
+                    <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" alt="Member" class="profile-avatar">
+                    <span class="profile-name">Sarah Johnson</span>
+                    <i class="fas fa-chevron-down"></i>
+                    <div class="profile-dropdown" id="profile-dropdown">
+                        <a href="#profile"><i class="fas fa-user"></i> My Profile</a>
+                        <a href="#settings"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#billing"><i class="fas fa-credit-card"></i> Billing</a>
+                        <a href="#support"><i class="fas fa-headset"></i> Support</a>
+                        <hr>
+                        <a href="index.html" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+                <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Header -->
+    <section class="dashboard-header">
+        <div class="container">
+            <div class="welcome-section">
+                <div class="welcome-content">
+                    <h1 class="welcome-title">Welcome back, <span class="highlight">Sarah!</span></h1>
+                    <p class="welcome-subtitle">Ready to crush your fitness goals today?</p>
+                    <div class="quick-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-fire"></i>
+                            <div class="stat-info">
+                                <span class="stat-number">847</span>
+                                <span class="stat-label">Calories Burned Today</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-dumbbell"></i>
+                            <div class="stat-info">
+                                <span class="stat-number">12</span>
+                                <span class="stat-label">Workouts This Month</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-trophy"></i>
+                            <div class="stat-info">
+                                <span class="stat-number">85%</span>
+                                <span class="stat-label">Goal Achievement</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="membership-card">
+                    <div class="card-header">
+                        <h3>Elite Membership</h3>
+                        <div class="membership-status active">Active</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="membership-info">
+                            <div class="info-item">
+                                <span class="label">Member Since:</span>
+                                <span class="value">January 2024</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Next Billing:</span>
+                                <span class="value">January 15, 2025</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Plan:</span>
+                                <span class="value">Elite Annual</span>
+                            </div>
+                        </div>
+                        <div class="qr-code">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=ELITE-MEMBER-12345" alt="Member QR Code">
+                            <span>Scan for gym access</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Content -->
+    <section class="dashboard-content">
+        <div class="container">
+            <div class="dashboard-grid">
+                <!-- Today's Schedule -->
+                <div class="dashboard-widget schedule-widget">
+                    <div class="widget-header">
+                        <h3><i class="fas fa-calendar-day"></i> Today's Schedule</h3>
+                        <button class="widget-action">View All</button>
+                    </div>
+                    <div class="widget-content">
+                        <div class="schedule-item upcoming">
+                            <div class="schedule-time">
+                                <span class="time">2:00 PM</span>
+                                <span class="duration">60 min</span>
+                            </div>
+                            <div class="schedule-details">
+                                <h4>HIIT Cardio Blast</h4>
+                                <p><i class="fas fa-map-marker-alt"></i> Studio A</p>
+                                <p><i class="fas fa-user"></i> Trainer: Mike Johnson</p>
+                            </div>
+                            <div class="schedule-status">
+                                <span class="status-badge booked">Booked</span>
+                            </div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="schedule-time">
+                                <span class="time">4:30 PM</span>
+                                <span class="duration">45 min</span>
+                            </div>
+                            <div class="schedule-details">
+                                <h4>Personal Training</h4>
+                                <p><i class="fas fa-map-marker-alt"></i> Training Zone</p>
+                                <p><i class="fas fa-user"></i> Trainer: Lisa Parker</p>
+                            </div>
+                            <div class="schedule-status">
+                                <span class="status-badge confirmed">Confirmed</span>
+                            </div>
+                        </div>
+                        <div class="schedule-item available">
+                            <div class="schedule-time">
+                                <span class="time">6:00 PM</span>
+                                <span class="duration">50 min</span>
+                            </div>
+                            <div class="schedule-details">
+                                <h4>Yoga Flow</h4>
+                                <p><i class="fas fa-map-marker-alt"></i> Wellness Studio</p>
+                                <p><i class="fas fa-users"></i> 3 spots available</p>
+                            </div>
+                            <div class="schedule-status">
+                                <button class="book-btn">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workout Progress -->
+                <div class="dashboard-widget progress-widget">
+                    <div class="widget-header">
+                        <h3><i class="fas fa-chart-line"></i> Workout Progress</h3>
+                        <select class="time-filter">
+                            <option>This Week</option>
+                            <option>This Month</option>
+                            <option>This Year</option>
+                        </select>
+                    </div>
+                    <div class="widget-content">
+                        <div class="progress-chart">
+                            <canvas id="workoutChart" width="400" height="200"></canvas>
+                        </div>
+                        <div class="progress-summary">
+                            <div class="summary-item">
+                                <span class="summary-label">Total Workouts</span>
+                                <span class="summary-value">24</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Avg Duration</span>
+                                <span class="summary-value">52 min</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Calories Burned</span>
+                                <span class="summary-value">8,420</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="dashboard-widget actions-widget">
+                    <div class="widget-header">
+                        <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                    </div>
+                    <div class="widget-content">
+                        <div class="action-grid">
+                            <button class="action-btn">
+                                <i class="fas fa-play"></i>
+                                <span>Start Workout</span>
+                            </button>
+                            <button class="action-btn">
+                                <i class="fas fa-calendar-plus"></i>
+                                <span>Book Class</span>
+                            </button>
+                            <button class="action-btn">
+                                <i class="fas fa-user-plus"></i>
+                                <span>Book Trainer</span>
+                            </button>
+                            <button class="action-btn">
+                                <i class="fas fa-utensils"></i>
+                                <span>Meal Plan</span>
+                            </button>
+                            <button class="action-btn">
+                                <i class="fas fa-camera"></i>
+                                <span>Progress Photo</span>
+                            </button>
+                            <button class="action-btn">
+                                <i class="fas fa-comments"></i>
+                                <span>Community</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="dashboard-widget activity-widget">
+                    <div class="widget-header">
+                        <h3><i class="fas fa-history"></i> Recent Activity</h3>
+                        <button class="widget-action">View All</button>
+                    </div>
+                    <div class="widget-content">
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon workout">
+                                    <i class="fas fa-dumbbell"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <h4>Completed Upper Body Strength</h4>
+                                    <p>Burned 420 calories • 55 minutes</p>
+                                    <span class="activity-time">2 hours ago</span>
+                                </div>
+                                <div class="activity-badge">
+                                    <i class="fas fa-fire"></i>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon class">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <h4>Attended HIIT Cardio Blast</h4>
+                                    <p>With trainer Mike Johnson</p>
+                                    <span class="activity-time">Yesterday</span>
+                                </div>
+                                <div class="activity-badge">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon achievement">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <h4>Achievement Unlocked!</h4>
+                                    <p>10 Workouts This Month</p>
+                                    <span class="activity-time">2 days ago</span>
+                                </div>
+                                <div class="activity-badge">
+                                    <i class="fas fa-medal"></i>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon nutrition">
+                                    <i class="fas fa-apple-alt"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <h4>Nutrition Goal Reached</h4>
+                                    <p>Daily protein target achieved</p>
+                                    <span class="activity-time">3 days ago</span>
+                                </div>
+                                <div class="activity-badge">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nutrition Tracking -->
+                <div class="dashboard-widget nutrition-widget">
+                    <div class="widget-header">
+                        <h3><i class="fas fa-apple-alt"></i> Today's Nutrition</h3>
+                        <button class="widget-action">Add Meal</button>
+                    </div>
+                    <div class="widget-content">
+                        <div class="nutrition-overview">
+                            <div class="calorie-circle">
+                                <div class="circle-progress" data-progress="68">
+                                    <span class="calories-consumed">1,360</span>
+                                    <span class="calories-total">/ 2,000 cal</span>
+                                </div>
+                            </div>
+                            <div class="macro-breakdown">
+                                <div class="macro-item">
+                                    <div class="macro-bar">
+                                        <div class="macro-fill protein" style="width: 75%"></div>
+                                    </div>
+                                    <span class="macro-label">Protein: 120g / 160g</span>
+                                </div>
+                                <div class="macro-item">
+                                    <div class="macro-bar">
+                                        <div class="macro-fill carbs" style="width: 60%"></div>
+                                    </div>
+                                    <span class="macro-label">Carbs: 150g / 250g</span>
+                                </div>
+                                <div class="macro-item">
+                                    <div class="macro-bar">
+                                        <div class="macro-fill fats" style="width: 45%"></div>
+                                    </div>
+                                    <span class="macro-label">Fats: 32g / 70g</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Goals & Achievements -->
+                <div class="dashboard-widget goals-widget">
+                    <div class="widget-header">
+                        <h3><i class="fas fa-target"></i> Goals & Achievements</h3>
+                        <button class="widget-action">Set Goal</button>
+                    </div>
+                    <div class="widget-content">
+                        <div class="goal-item">
+                            <div class="goal-info">
+                                <h4>Monthly Workout Goal</h4>
+                                <p>Complete 20 workouts this month</p>
+                            </div>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 60%"></div>
+                                </div>
+                                <span class="progress-text">12 / 20</span>
+                            </div>
+                        </div>
+                        <div class="goal-item">
+                            <div class="goal-info">
+                                <h4>Weight Loss Target</h4>
+                                <p>Lose 10 lbs by March 2025</p>
+                            </div>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 40%"></div>
+                                </div>
+                                <span class="progress-text">4 / 10 lbs</span>
+                            </div>
+                        </div>
+                        <div class="achievements-preview">
+                            <h4>Recent Achievements</h4>
+                            <div class="achievement-badges">
+                                <div class="badge-item">
+                                    <i class="fas fa-fire"></i>
+                                    <span>7-Day Streak</span>
+                                </div>
+                                <div class="badge-item">
+                                    <i class="fas fa-dumbbell"></i>
+                                    <span>Strength Warrior</span>
+                                </div>
+                                <div class="badge-item">
+                                    <i class="fas fa-heart"></i>
+                                    <span>Cardio Champion</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Action Button -->
+    <div class="floating-actions">
+        <button class="fab-main" id="fab-main">
+            <i class="fas fa-plus"></i>
+        </button>
+        <div class="fab-menu" id="fab-menu">
+            <button class="fab-item" data-action="workout">
+                <i class="fas fa-play"></i>
+                <span>Start Workout</span>
+            </button>
+            <button class="fab-item" data-action="class">
+                <i class="fas fa-calendar-plus"></i>
+                <span>Book Class</span>
+            </button>
+            <button class="fab-item" data-action="meal">
+                <i class="fas fa-utensils"></i>
+                <span>Log Meal</span>
+            </button>
+            <button class="fab-item" data-action="progress">
+                <i class="fas fa-camera"></i>
+                <span>Progress Photo</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="../../script.js"></script>
+    <script src="dashboard-script.js"></script>
+</body>
+</html>
