@@ -1,0 +1,577 @@
+Convert to HTML and CSS<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymXcel - Elevate Your Physique, Unleash Excellence</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-elite">GYM</span><span class="logo-gym">Ecel</span>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#membership-plans" class="nav-link">Membership Plans</a>
+                <a href="#classes" class="nav-link">Classes</a>
+                <a href="#personal-trainers" class="nav-link">Personal Trainers</a>
+                <a href="#blog" class="nav-link">Blog</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="login-btn">
+                    <i class="fas fa-user"></i>
+                    <span>Login/Register</span>
+                </button>
+                <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="hero-line">Elevate Your</span>
+                <span class="hero-highlight">Physique</span>
+                <span class="hero-subtitle">Unleash Excellence</span>
+            </h1>
+            <p class="hero-description">
+                Transform your body and mind with our world-class facilities, expert trainers, and premium equipment.
+            </p>
+            <div class="hero-actions">
+                <button class="btn-primary">
+                    <span>Join Now</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="btn-secondary">
+                    <i class="fas fa-play"></i>
+                    <span>Watch Tour</span>
+                </button>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-mouse">
+                <div class="scroll-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section class="registration" id="registration">
+        <div class="container">
+            <div class="registration-grid">
+                <div class="registration-content">
+                    <h2 class="section-title">
+                        Start Your
+                        <span class="title-highlight">Transformation</span>
+                    </h2>
+                    <p class="section-description">
+                        Join thousands of members who have transformed their lives with our premium facilities and expert guidance.
+                    </p>
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <div class="benefit-check">✓</div>
+                            <span>Access to all premium equipment</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-check">✓</div>
+                            <span>Personal trainer consultation</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-check">✓</div>
+                            <span>Unlimited group classes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="registration-form-container">
+                    <h3 class="form-title">Get Your Free Trial</h3>
+                    <form class="registration-form" id="registration-form">
+                        <div class="form-group">
+                            <i class="fas fa-user form-icon"></i>
+                            <input type="text" name="fullName" placeholder="Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <i class="fas fa-phone form-icon"></i>
+                            <input type="tel" name="phone" placeholder="Phone Number" required>
+                        </div>
+                        <div class="form-group">
+                            <i class="fas fa-envelope form-icon"></i>
+                            <input type="email" name="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <i class="fas fa-credit-card form-icon"></i>
+                            <select name="membershipPlan" required>
+                                <option value="">Select Membership Plan</option>
+                                <option value="basic-monthly">Basic Monthly</option>
+                                <option value="premium-monthly">Premium Monthly</option>
+                                <option value="elite-monthly">Elite Monthly</option>
+                                <option value="annual-premium">Annual Premium</option>
+                                <option value="elite-annual">Elite Annual</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="form-submit-btn">
+                            Get 1-Week Free Trial
+                        </button>
+                    </form>
+                    <p class="form-disclaimer">
+                        No commitment required. Cancel anytime.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog" id="blog">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    Fitness
+                    <span class="title-highlight">Knowledge</span>
+                </h2>
+                <p class="section-description">
+                    Stay informed with the latest fitness tips, nutrition advice, and training techniques from our expert team.
+                </p>
+            </div>
+            
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" alt="Building Muscle">
+                        <div class="blog-category">Strength Training</div>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">10 Essential Exercises for Building Muscle</h3>
+                        <p class="blog-excerpt">Discover the fundamental movements that will transform your physique and maximize your strength gains.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <i class="fas fa-user"></i>
+                                <span>Mike Johnson</span>
+                            </div>
+                            <div class="blog-time">
+                                <i class="fas fa-clock"></i>
+                                <span>5 min read</span>
+                            </div>
+                        </div>
+                        <a href="#" class="blog-link">
+                            <span>Read More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" alt="Nutrition Guide">
+                        <div class="blog-category">Nutrition</div>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">Nutrition Guide for Optimal Performance</h3>
+                        <p class="blog-excerpt">Learn how to fuel your body for maximum results with our comprehensive nutrition strategies.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <i class="fas fa-user"></i>
+                                <span>Sarah Chen</span>
+                            </div>
+                            <div class="blog-time">
+                                <i class="fas fa-clock"></i>
+                                <span>7 min read</span>
+                            </div>
+                        </div>
+                        <a href="#" class="blog-link">
+                            <span>Read More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.pexels.com/photos/4056723/pexels-photo-4056723.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" alt="Recovery Techniques">
+                        <div class="blog-category">Recovery</div>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">Recovery Techniques for Athletes</h3>
+                        <p class="blog-excerpt">Master the art of recovery with proven techniques that will accelerate your progress.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <i class="fas fa-user"></i>
+                                <span>David Smith</span>
+                            </div>
+                            <div class="blog-time">
+                                <i class="fas fa-clock"></i>
+                                <span>6 min read</span>
+                            </div>
+                        </div>
+                        <a href="#" class="blog-link">
+                            <span>Read More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.pexels.com/photos/1431282/pexels-photo-1431282.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" alt="Mental Strength">
+                        <div class="blog-category">Mindset</div>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">Mental Strength in Fitness</h3>
+                        <p class="blog-excerpt">Develop the mindset of champions and overcome mental barriers to achieve your goals.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <i class="fas fa-user"></i>
+                                <span>Lisa Parker</span>
+                            </div>
+                            <div class="blog-time">
+                                <i class="fas fa-clock"></i>
+                                <span>4 min read</span>
+                            </div>
+                        </div>
+                        <a href="#" class="blog-link">
+                            <span>Read More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="blog-cta">
+                <button class="btn-dark">
+                    <span>View All Articles</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offers Section -->
+    <section class="offers" id="offers">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    Special
+                    <span class="title-highlight">Offers</span>
+                </h2>
+                <p class="section-description">
+                    Don't miss out on our exclusive deals designed to help you start your fitness journey.
+                </p>
+            </div>
+            
+            <div class="offers-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carousel-track">
+                        <div class="offer-slide active">
+                            <div class="offer-content">
+                                <div class="offer-badge">
+                                    <i class="fas fa-percent"></i>
+                                    <span>50% OFF</span>
+                                </div>
+                                <h3 class="offer-title">New Member Special</h3>
+                                <p class="offer-description">Join now and get 50% off your first month plus a free personal training session</p>
+                                <div class="offer-actions">
+                                    <button class="btn-primary">Claim Offer</button>
+                                    <div class="offer-validity">
+                                        <i class="fas fa-star"></i>
+                                        <span>Valid: Limited Time</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="offer-image">
+                                <img src="https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="New Member Special">
+                            </div>
+                        </div>
+
+                        <div class="offer-slide">
+                            <div class="offer-content">
+                                <div class="offer-badge">
+                                    <i class="fas fa-percent"></i>
+                                    <span>25% OFF</span>
+                                </div>
+                                <h3 class="offer-title">Student Discount</h3>
+                                <p class="offer-description">Students get 25% off all membership plans with valid student ID</p>
+                                <div class="offer-actions">
+                                    <button class="btn-primary">Get Discount</button>
+                                    <div class="offer-validity">
+                                        <i class="fas fa-star"></i>
+                                        <span>Valid: Academic Year</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="offer-image">
+                                <img src="https://images.pexels.com/photos/1431282/pexels-photo-1431282.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="Student Discount">
+                            </div>
+                        </div>
+
+                        <div class="offer-slide">
+                            <div class="offer-content">
+                                <div class="offer-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>GROUP RATES</span>
+                                </div>
+                                <h3 class="offer-title">Corporate Wellness</h3>
+                                <p class="offer-description">Bring your team! Corporate memberships starting at just $299 per employee</p>
+                                <div class="offer-actions">
+                                    <button class="btn-primary">Learn More</button>
+                                    <div class="offer-validity">
+                                        <i class="fas fa-star"></i>
+                                        <span>Valid: Ongoing</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="offer-image">
+                                <img src="https://images.pexels.com/photos/1552252/pexels-photo-1552252.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="Corporate Wellness">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-btn carousel-prev" id="carousel-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn carousel-next" id="carousel-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <div class="carousel-dots">
+                    <button class="dot active" data-slide="0"></button>
+                    <button class="dot" data-slide="1"></button>
+                    <button class="dot" data-slide="2"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    Member
+                    <span class="title-highlight">Success Stories</span>
+                </h2>
+                <p class="section-description">
+                    Real transformations from real people who chose to elevate their fitness journey with us.
+                </p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-content">
+                        "GymXcel completely transformed my approach to fitness. The trainers are exceptional and the facilities are world-class. I've never felt stronger or more confident."
+                    </p>
+                    <div class="testimonial-result">
+                        Lost 25 lbs in 4 months
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="Jennifer Martinez">
+                        <div class="author-info">
+                            <h4>Jennifer Martinez</h4>
+                            <p>Marketing Executive</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-content">
+                        "The personalized training programs and state-of-the-art equipment make all the difference. GymXcel isn't just a gym, it's a lifestyle upgrade."
+                    </p>
+                    <div class="testimonial-result">
+                        Gained 15 lbs muscle
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="Michael Chen">
+                        <div class="author-info">
+                            <h4>Michael Chen</h4>
+                            <p>Software Engineer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-content">
+                        "As a busy entrepreneur, I needed a gym that maximizes results in minimal time. GymXcel's efficient programs and expert guidance deliver exactly that."
+                    </p>
+                    <div class="testimonial-result">
+                        Improved overall fitness by 40%
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="Sarah Johnson">
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Business Owner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonials-cta">
+                <p class="cta-text">Ready to write your own success story?</p>
+                <button class="btn-primary">Start Your Transformation</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-elite">ELITE</span><span class="logo-gym">GYM</span>
+                    </div>
+                    <p class="footer-description">
+                        Transform your body and mind with our world-class facilities, expert trainers, and premium equipment.
+                    </p>
+                    <div class="footer-contact">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Fitness Street, Elite District, NY 10001</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>(555) 123-ELITE</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@GymXcel.com</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#membership-plans">Membership Plans</a></li>
+                        <li><a href="#personal-training">Personal Training</a></li>
+                        <li><a href="#classes">Group Classes</a></li>
+                        <li><a href="#nutrition">Nutrition Coaching</a></li>
+                        <li><a href="#corporate">Corporate Wellness</a></li>
+                        <li><a href="#student">Student Discounts</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-support">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#support">Contact Support</a></li>
+                        <li><a href="#portal">Member Portal</a></li>
+                        <li><a href="#schedule">Class Schedule</a></li>
+                        <li><a href="#tours">Facility Tours</a></li>
+                        <li><a href="#safety">Safety Guidelines</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-hours">
+                    <h3>Hours & Social</h3>
+                    <div class="hours-info">
+                        <div class="hours-header">
+                            <i class="fas fa-clock"></i>
+                            <span>Opening Hours</span>
+                        </div>
+                        <div class="hours-list">
+                            <div class="hours-item">
+                                <span>Mon - Fri:</span>
+                                <span>5:00 AM - 11:00 PM</span>
+                            </div>
+                            <div class="hours-item">
+                                <span>Saturday:</span>
+                                <span>6:00 AM - 10:00 PM</span>
+                            </div>
+                            <div class="hours-item">
+                                <span>Sunday:</span>
+                                <span>7:00 AM - 9:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <h4>Follow Us</h4>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-map">
+                <h3>Find Us</h3>
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.0994!2d-74.0059!3d40.7128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQyJzQ2LjEiTiA3NMKwMDAnMjEuMyJX!5e0!3m2!1sen!2sus!4v1635959000000!5m2!1sen!2sus"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="GymXcel Location">
+                    </iframe>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2024 GymXcel. All rights reserved.</p>
+                </div>
+                <div class="footer-legal">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                    <a href="#cookies">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
