@@ -1,0 +1,15 @@
+name: Get Changed Files
+on: [push]
+
+jobs:
+  check-diff:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2  # 直前のコミットも取得
+
+      - name: List changed files
+        run: |
+          echo "変更されたファイル:"
+          git diff --name-only HEAD^ HEAD
