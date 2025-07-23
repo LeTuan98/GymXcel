@@ -88,6 +88,7 @@ $name=$users['name'];
                             <th>Protein</th>
                             <th>Carb</th>
                             <th>Fat</th>
+                            <th>食量</th>
                         </tr>
                     </thead>
                     <tbody>
