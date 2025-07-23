@@ -372,23 +372,24 @@ setInterval(() => {
 function updateWelcomeMessage() {
     const welcomeTitle = document.querySelector('.welcome-title');
     const welcomeSubtitle = document.querySelector('.welcome-subtitle');
+    const welcomename = document.querySelector('.highlight');
     
     if (welcomeTitle && welcomeSubtitle) {
         const hour = new Date().getHours();
         let greeting, message;
         
         if (hour < 12) {
-            greeting = 'Good morning';
-            message = 'Ready to start your day strong?';
+            greeting = 'おはよう';
+            message = '一日を元気にスタートする準備はできていますか?';
         } else if (hour < 17) {
-            greeting = 'Good afternoon';
-            message = 'Time for your midday energy boost?';
+            greeting = 'こんにちは';
+            message = '昼間のエネルギーを高める時間ですか?';
         } else {
-            greeting = 'Good evening';
-            message = 'Ready to finish strong today?';
+            greeting = 'こんばんわ';
+            message = '今日を力強く終える準備はできていますか?';
         }
         
-        welcomeTitle.innerHTML = `${greeting}, <span class="highlight">Sarah!</span>`;
+        welcomeTitle.innerHTML = `${greeting}, <span class="highlight">${welcomename.textContent}</span>`;
         welcomeSubtitle.textContent = message;
     }
 }

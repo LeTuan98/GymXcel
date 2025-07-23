@@ -1,0 +1,122 @@
+/* Comparison Table */
+.comparison-section {
+    padding: 5rem 0;
+    background: #1A1A1A;
+}
+
+.comparison-table {
+    overflow-x: auto;
+    margin-top: 3rem;
+}
+
+.comparison-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #0F0F0F;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 1.2rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid #333;
+}
+
+.comparison-table th {
+    background: #D4AF37;
+    color: #000;
+    font-weight: 700;
+}
+
+.comparison-table tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.comparison-table tr:hover {
+    background: rgba(212, 175, 55, 0.1);
+}
+
+/* Corporate Section */
+.corporate-section {
+    padding: 5rem 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg') no-repeat center center;
+    background-size: cover;
+    color: #fff;
+    text-align: center;
+}
+
+.corporate-benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.benefit-item {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.benefit-item:hover {
+    transform: translateY(-5px);
+    background: rgba(212, 175, 55, 0.2);
+}
+
+.benefit-item i {
+    font-size: 2.5rem;
+    color: #D4AF37;
+    margin-bottom: 1rem;
+}
+
+.benefit-item h4 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.benefit-item p {
+    color: #BDBDBD;
+    font-size: 0.9rem;
+}
+
+/* Free Trial Section */
+.trial-section {
+    padding: 4rem 0;
+    background: #D4AF37;
+    color: #000;
+    text-align: center;
+}
+
+.trial-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.trial-section p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .plans-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .plan-card.featured {
+        transform: scale(1);
+    }
+    
+    .comparison-table {
+        font-size: 0.9rem;
+    }
+    
+    .corporate-benefits {
+        grid-template-columns: 1fr;
+    }
+}

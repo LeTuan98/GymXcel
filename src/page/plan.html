@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymXcel - 会員プラン</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../styles/plan.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../../index.html">
+                    <span class="logo-elite">Gym</span><span class="logo-gym">Xcel</span>
+                </a>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html#home" class="nav-link">ホーム</a>
+                <a href="./plan.html" class="nav-link active">会員プラン</a>
+                <a href="../class-maneger/class-maneger.html" class="nav-link">クラス</a>
+                <a href="index.html#personal-trainers" class="nav-link">パーソナルトレーナー</a>
+                <a href="index.html#blog" class="nav-link">ブログ</a>
+                <a href="index.html#contact" class="nav-link">お問い合わせ</a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="login-btn">
+                    <i class="fas fa-user"></i>
+                    <span>ログイン/登録</span>
+                </button>
+                <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Membership Plans Header -->
+    <section class="plans-header">
+        <div class="container">
+            <h2 class="section-title">
+                会員<span class="title-highlight">プラン</span>
+            </h2>
+            <p class="section-description">
+                GymXcelのプレミアムメンバーシップで、あなたのフィットネス目標を達成しましょう。最適なプランをお選びください。
+            </p>
+        </div>
+    </section>
+
+    <!-- Membership Plans Grid -->
+    <section class="plans-section">
+        <div class="container">
+            <div class="plans-grid">
+                <!-- Basic Plan -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3 class="plan-name">ベーシック</h3>
+                        <div class="plan-price">¥8,800<span class="plan-period">/月</span></div>
+                        <p class="plan-description">フィットネス初心者に最適</p>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> 施設利用（平日 9:00-21:00）</li>
+                            <li><i class="fas fa-check"></i> 無料ウェイトエリア</li>
+                            <li><i class="fas fa-check"></i> カーディオマシン利用</li>
+                            <li><i class="fas fa-check"></i> 無料ロッカー利用</li>
+                            <li><i class="fas fa-check"></i> グループクラス（週2回）</li>
+                            <li><i class="fas fa-times"></i> プライベートトレーニング</li>
+                            <li><i class="fas fa-times"></i> 24時間アクセス</li>
+                        </ul>
+                        <a href="register.html" class="btn-secondary">今すぐ登録</a>
+                    </div>
+                </div>
+
+                <!-- Premium Plan (Recommended) -->
+                <div class="plan-card featured">
+                    <div class="plan-badge">おすすめ</div>
+                    <div class="plan-header">
+                        <h3 class="plan-name">プレミアム</h3>
+                        <div class="plan-price">¥12,800<span class="plan-period">/月</span></div>
+                        <p class="plan-description">本格的なトレーニングに最適</p>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> 施設利用（全日 7:00-23:00）</li>
+                            <li><i class="fas fa-check"></i> 無制限グループクラス</li>
+                            <li><i class="fas fa-check"></i> プライベートトレーニング（月2回）</li>
+                            <li><i class="fas fa-check"></i> プロテインシャワー利用</li>
+                            <li><i class="fas fa-check"></i> 栄養コンサルティング（月1回）</li>
+                            <li><i class="fas fa-check"></i> 優先予約権</li>
+                            <li><i class="fas fa-times"></i> 24時間アクセス</li>
+                        </ul>
+                        <a href="register.html" class="btn-primary">今すぐ登録</a>
+                    </div>
+                </div>
+
+                <!-- Elite Plan -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3 class="plan-name">エリート</h3>
+                        <div class="plan-price">¥18,800<span class="plan-period">/月</span></div>
+                        <p class="plan-description">最高峰のフィットネス体験</p>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> 24時間施設利用</li>
+                            <li><i class="fas fa-check"></i> 無制限プライベートトレーニング</li>
+                            <li><i class="fas fa-check"></i> 専用ロッカー</li>
+                            <li><i class="fas fa-check"></i> パーソナル栄養プラン</li>
+                            <li><i class="fas fa-check"></i> 優先設備予約</li>
+                            <li><i class="fas fa-check"></i> ゲスト無料招待（月2回）</li>
+                            <li><i class="fas fa-check"></i> 専用エントランス</li>
+                        </ul>
+                        <a href="register.html" class="btn-secondary">今すぐ登録</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Comparison -->
+    <section class="comparison-section">
+        <div class="container">
+            <h2 class="section-title">
+                プラン<span class="title-highlight">比較</span>
+            </h2>
+            
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>特典</th>
+                            <th>ベーシック</th>
+                            <th>プレミアム</th>
+                            <th>エリート</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>施設利用時間</td>
+                            <td>平日 9:00-21:00</td>
+                            <td>全日 7:00-23:00</td>
+                            <td>24時間</td>
+                        </tr>
+                        <tr>
+                            <td>グループクラス</td>
+                            <td>週2回</td>
+                            <td>無制限</td>
+                            <td>無制限</td>
+                        </tr>
+                        <tr>
+                            <td>プライベートトレーニング</td>
+                            <td>-</td>
+                            <td>月2回</td>
+                            <td>無制限</td>
+                        </tr>
+                        <tr>
+                            <td>栄養コンサルティング</td>
+                            <td>-</td>
+                            <td>月1回</td>
+                            <td>個別プラン</td>
+                        </tr>
+                        <tr>
+                            <td>プロテインサービス</td>
+                            <td>-</td>
+                            <td>利用可</td>
+                            <td>プレミアムサービス</td>
+                        </tr>
+                        <tr>
+                            <td>ゲスト招待</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>月2回</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Corporate Membership -->
+    <section class="corporate-section">
+        <div class="container">
+            <div class="corporate-content">
+                <h2 class="section-title">
+                    法人<span class="title-highlight">会員</span>
+                </h2>
+                <p class="section-description">
+                    従業員の健康とウェルネスを促進するための特別法人プランをご用意しています。
+                </p>
+                
+                <div class="corporate-benefits">
+                    <div class="benefit-item">
+                        <i class="fas fa-percentage"></i>
+                        <h4>割引価格</h4>
+                        <p>従業員5名以上で特別料金</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h4>フレキシブルスケジュール</h4>
+                        <p>勤務時間に合わせた利用可能</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>健康管理</h4>
+                        <p>従業員の健康状態レポート</p>
+                    </div>
+                </div>
+                
+                <a href="contact.html" class="btn-dark">法人プランのお問い合わせ</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Free Trial Section -->
+    <section class="trial-section">
+        <div class="container">
+            <div class="trial-content">
+                <h2>まだ迷っていますか？</h2>
+                <p>1週間の無料トライアルでGymXcelの違いを体験してください</p>
+                <a href="register.html" class="btn-primary">無料トライアルを開始</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-elite">Gym</span><span class="logo-gym">Xcel</span>
+                    </div>
+                    <p class="footer-description">
+                        世界クラスの施設、専門トレーナー、プレミアム設備で身体と心を変革しましょう。
+                    </p>
+                    <div class="footer-contact">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>東京都港区六本木3-2-1</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>03-1234-5678</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@gymxcel.jp</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>クイックリンク</h3>
+                    <ul>
+                        <li><a href="membership.html">会員プラン</a></li>
+                        <li><a href="index.html#personal-training">パーソナルトレーニング</a></li>
+                        <li><a href="index.html#classes">グループクラス</a></li>
+                        <li><a href="index.html#nutrition">栄養指導</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-support">
+                    <h3>サポート</h3>
+                    <ul>
+                        <li><a href="#faq">よくある質問</a></li>
+                        <li><a href="#support">お問い合わせ</a></li>
+                        <li><a href="#portal">会員ポータル</a></li>
+                        <li><a href="#schedule">クラススケジュール</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-hours">
+                    <h3>営業時間</h3>
+                    <div class="hours-info">
+                        <div class="hours-header">
+                            <i class="fas fa-clock"></i>
+                            <span>通常営業時間</span>
+                        </div>
+                        <div class="hours-list">
+                            <div class="hours-item">
+                                <span>月～金:</span>
+                                <span>6:00 - 23:00</span>
+                            </div>
+                            <div class="hours-item">
+                                <span>土曜日:</span>
+                                <span>8:00 - 21:00</span>
+                            </div>
+                            <div class="hours-item">
+                                <span>日曜日:</span>
+                                <span>8:00 - 20:00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <h4>ソーシャルメディア</h4>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2024 GymXcel. 無断複写・転載を禁じます。</p>
+                </div>
+                <div class="footer-legal">
+                    <a href="#privacy">プライバシーポリシー</a>
+                    <a href="#terms">利用規約</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,34 +1,42 @@
-Convert to HTML and CSS<!DOCTYPE html>
-<html lang="en">
+<?php
+session_start();
+// Kiểm tra đăng nhập
+if (isset($_SESSION['logged_in']) || $_SESSION['logged_in'] == true) {
+    header("Location: ./src/page/dashboard.php");
+    exit(); 
+}
+?>
+<!DOCTYPE html>
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GymXcel - Elevate Your Physique, Unleash Excellence</title>
+    <title>ジムエクセル - 身体を高め、卓越性を解き放つ</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- ナビゲーション -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <span class="logo-elite">Gym</span><span class="logo-gym">Ecel</span>
+                <span class="logo-elite">Gym</span><span class="logo-gym">Xcel</span>
             </div>
             
             <div class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#membership-plans" class="nav-link">Membership Plans</a>
-                <a href="#classes" class="nav-link">Classes</a>
-                <a href="#personal-trainers" class="nav-link">Personal Trainers</a>
-                <a href="#blog" class="nav-link">Blog</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                <a href="./index.php" class="nav-link active">ホーム</a>
+                <a href="./src/plan/plan.html" class="nav-link">会員プラン</a>
+                <a href="./src/class-maneger/class-maneger.html" class="nav-link">クラス</a>
+                <a href="#personal-trainers" class="nav-link">パーソナルトレーナー</a>
+                <a href="./src/blog/blog-port.html" class="nav-link">ブログ</a>
+                <a href="#contact" class="nav-link">お問い合わせ</a>
             </div>
             
             <div class="nav-actions">
-                <button class="login-btn">
+                <button class="login-btn" onclick="window.location.href='./src/page/login.php'">
                     <i class="fas fa-user"></i>
-                    <span>Login/Register</span>
+                    <span>ログイン/登録</span>
                 </button>
                 <div class="mobile-menu-toggle" id="mobile-menu-toggle">
                     <span></span>
@@ -39,28 +47,28 @@ Convert to HTML and CSS<!DOCTYPE html>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- ヒーローセクション -->
     <section class="hero" id="home">
         <div class="hero-background">
             <div class="hero-overlay"></div>
         </div>
         <div class="hero-content">
             <h1 class="hero-title">
-                <span class="hero-line">Elevate Your</span>
-                <span class="hero-highlight">Physique</span>
-                <span class="hero-subtitle">Unleash Excellence</span>
+                <span class="hero-line">あなたの</span>
+                <span class="hero-highlight">身体を高める</span>
+                <span class="hero-subtitle">卓越性を解き放つ</span>
             </h1>
             <p class="hero-description">
-                Transform your body and mind with our world-class facilities, expert trainers, and premium equipment.
+                世界クラスの施設、専門トレーナー、プレミアム設備で身体と心を変革しましょう。
             </p>
             <div class="hero-actions">
                 <button class="btn-primary">
-                    <span>Join Now</span>
+                    <span>今すぐ参加</span>
                     <i class="fas fa-arrow-right"></i>
                 </button>
                 <button class="btn-secondary">
                     <i class="fas fa-play"></i>
-                    <span>Watch Tour</span>
+                    <span>ツアーを見る</span>
                 </button>
             </div>
         </div>
@@ -71,106 +79,106 @@ Convert to HTML and CSS<!DOCTYPE html>
         </div>
     </section>
 
-    <!-- Registration Section -->
+    <!-- 登録セクション -->
     <section class="registration" id="registration">
         <div class="container">
             <div class="registration-grid">
                 <div class="registration-content">
                     <h2 class="section-title">
-                        Start Your
-                        <span class="title-highlight">Transformation</span>
+                        あなたの
+                        <span class="title-highlight">変革を始める</span>
                     </h2>
                     <p class="section-description">
-                        Join thousands of members who have transformed their lives with our premium facilities and expert guidance.
+                        プレミアム施設と専門家の指導で人生を変えた何千人もの会員に加わりましょう。
                     </p>
                     <div class="benefits-list">
                         <div class="benefit-item">
                             <div class="benefit-check">✓</div>
-                            <span>Access to all premium equipment</span>
+                            <span>すべてのプレミアム設備へのアクセス</span>
                         </div>
                         <div class="benefit-item">
                             <div class="benefit-check">✓</div>
-                            <span>Personal trainer consultation</span>
+                            <span>パーソナルトレーナー相談</span>
                         </div>
                         <div class="benefit-item">
                             <div class="benefit-check">✓</div>
-                            <span>Unlimited group classes</span>
+                            <span>無制限のグループクラス</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="registration-form-container">
-                    <h3 class="form-title">Get Your Free Trial</h3>
+                    <h3 class="form-title">無料トライアルを取得</h3>
                     <form class="registration-form" id="registration-form">
                         <div class="form-group">
                             <i class="fas fa-user form-icon"></i>
-                            <input type="text" name="fullName" placeholder="Full Name" required>
+                            <input type="text" name="fullName" placeholder="フルネーム" required>
                         </div>
                         <div class="form-group">
                             <i class="fas fa-phone form-icon"></i>
-                            <input type="tel" name="phone" placeholder="Phone Number" required>
+                            <input type="tel" name="phone" placeholder="電話番号" required>
                         </div>
                         <div class="form-group">
                             <i class="fas fa-envelope form-icon"></i>
-                            <input type="email" name="email" placeholder="Email Address" required>
+                            <input type="email" name="email" placeholder="メールアドレス" required>
                         </div>
                         <div class="form-group">
                             <i class="fas fa-credit-card form-icon"></i>
                             <select name="membershipPlan" required>
-                                <option value="">Select Membership Plan</option>
-                                <option value="basic-monthly">Basic Monthly</option>
-                                <option value="premium-monthly">Premium Monthly</option>
-                                <option value="elite-monthly">Elite Monthly</option>
-                                <option value="annual-premium">Annual Premium</option>
-                                <option value="elite-annual">Elite Annual</option>
+                                <option value="">会員プランを選択</option>
+                                <option value="basic-monthly">ベーシック月額</option>
+                                <option value="premium-monthly">プレミアム月額</option>
+                                <option value="elite-monthly">エリート月額</option>
+                                <option value="annual-premium">年間プレミアム</option>
+                                <option value="elite-annual">エリート年間</option>
                             </select>
                         </div>
                         <button type="submit" class="form-submit-btn">
-                            Get 1-Week Free Trial
+                            1週間無料トライアルを取得
                         </button>
                     </form>
                     <p class="form-disclaimer">
-                        No commitment required. Cancel anytime.
+                        契約の義務はありません。いつでもキャンセル可能。
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Blog Section -->
+    <!-- ブログセクション -->
     <section class="blog" id="blog">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">
-                    Fitness
-                    <span class="title-highlight">Knowledge</span>
+                    フィットネス
+                    <span class="title-highlight">知識</span>
                 </h2>
                 <p class="section-description">
-                    Stay informed with the latest fitness tips, nutrition advice, and training techniques from our expert team.
+                    専門家チームからの最新のフィットネスヒント、栄養アドバイス、トレーニング技術を入手しましょう。
                 </p>
             </div>
             
             <div class="blog-grid">
                 <article class="blog-card">
                     <div class="blog-image">
-                        <img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" alt="Building Muscle">
-                        <div class="blog-category">Strength Training</div>
+                        <img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" alt="筋肉をつける">
+                        <div class="blog-category">筋力トレーニング</div>
                     </div>
                     <div class="blog-content">
-                        <h3 class="blog-title">10 Essential Exercises for Building Muscle</h3>
-                        <p class="blog-excerpt">Discover the fundamental movements that will transform your physique and maximize your strength gains.</p>
+                        <h3 class="blog-title">筋肉をつけるための10の必須エクササイズ</h3>
+                        <p class="blog-excerpt">あなたの体格を変え、筋力の増加を最大化する基本的な動きを発見しましょう。</p>
                         <div class="blog-meta">
                             <div class="blog-author">
                                 <i class="fas fa-user"></i>
-                                <span>Mike Johnson</span>
+                                <span>マイク・ジョンソン</span>
                             </div>
                             <div class="blog-time">
                                 <i class="fas fa-clock"></i>
-                                <span>5 min read</span>
+                                <span>5分で読める</span>
                             </div>
                         </div>
                         <a href="#" class="blog-link">
-                            <span>Read More</span>
+                            <span>続きを読む</span>
                             <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -178,24 +186,24 @@ Convert to HTML and CSS<!DOCTYPE html>
 
                 <article class="blog-card">
                     <div class="blog-image">
-                        <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" alt="Nutrition Guide">
-                        <div class="blog-category">Nutrition</div>
+                        <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" alt="栄養ガイド">
+                        <div class="blog-category">栄養</div>
                     </div>
                     <div class="blog-content">
-                        <h3 class="blog-title">Nutrition Guide for Optimal Performance</h3>
-                        <p class="blog-excerpt">Learn how to fuel your body for maximum results with our comprehensive nutrition strategies.</p>
+                        <h3 class="blog-title">最適なパフォーマンスのための栄養ガイド</h3>
+                        <p class="blog-excerpt">包括的な栄養戦略で最大の結果を得るために体に燃料を供給する方法を学びましょう。</p>
                         <div class="blog-meta">
                             <div class="blog-author">
                                 <i class="fas fa-user"></i>
-                                <span>Sarah Chen</span>
+                                <span>サラ・チェン</span>
                             </div>
                             <div class="blog-time">
                                 <i class="fas fa-clock"></i>
-                                <span>7 min read</span>
+                                <span>7分で読める</span>
                             </div>
                         </div>
                         <a href="#" class="blog-link">
-                            <span>Read More</span>
+                            <span>続きを読む</span>
                             <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -203,24 +211,24 @@ Convert to HTML and CSS<!DOCTYPE html>
 
                 <article class="blog-card">
                     <div class="blog-image">
-                        <img src="https://images.pexels.com/photos/4056723/pexels-photo-4056723.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" alt="Recovery Techniques">
-                        <div class="blog-category">Recovery</div>
+                        <img src="https://images.pexels.com/photos/4056723/pexels-photo-4056723.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" alt="回復技術">
+                        <div class="blog-category">回復</div>
                     </div>
                     <div class="blog-content">
-                        <h3 class="blog-title">Recovery Techniques for Athletes</h3>
-                        <p class="blog-excerpt">Master the art of recovery with proven techniques that will accelerate your progress.</p>
+                        <h3 class="blog-title">アスリートのための回復技術</h3>
+                        <p class="blog-excerpt">あなたの進歩を加速させる実証済みの技術で回復の技術をマスターしましょう。</p>
                         <div class="blog-meta">
                             <div class="blog-author">
                                 <i class="fas fa-user"></i>
-                                <span>David Smith</span>
+                                <span>デビッド・スミス</span>
                             </div>
                             <div class="blog-time">
                                 <i class="fas fa-clock"></i>
-                                <span>6 min read</span>
+                                <span>6分で読める</span>
                             </div>
                         </div>
                         <a href="#" class="blog-link">
-                            <span>Read More</span>
+                            <span>続きを読む</span>
                             <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -228,24 +236,24 @@ Convert to HTML and CSS<!DOCTYPE html>
 
                 <article class="blog-card">
                     <div class="blog-image">
-                        <img src="https://images.pexels.com/photos/1431282/pexels-photo-1431282.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" alt="Mental Strength">
-                        <div class="blog-category">Mindset</div>
+                        <img src="https://images.pexels.com/photos/1431282/pexels-photo-1431282.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" alt="メンタル強さ">
+                        <div class="blog-category">マインドセット</div>
                     </div>
                     <div class="blog-content">
-                        <h3 class="blog-title">Mental Strength in Fitness</h3>
-                        <p class="blog-excerpt">Develop the mindset of champions and overcome mental barriers to achieve your goals.</p>
+                        <h3 class="blog-title">フィットネスにおけるメンタル強さ</h3>
+                        <p class="blog-excerpt">チャンピオンのマインドセットを開発し、目標を達成するために精神的障壁を克服しましょう。</p>
                         <div class="blog-meta">
                             <div class="blog-author">
                                 <i class="fas fa-user"></i>
-                                <span>Lisa Parker</span>
+                                <span>リサ・パーカー</span>
                             </div>
                             <div class="blog-time">
                                 <i class="fas fa-clock"></i>
-                                <span>4 min read</span>
+                                <span>4分で読める</span>
                             </div>
                         </div>
                         <a href="#" class="blog-link">
-                            <span>Read More</span>
+                            <span>続きを読む</span>
                             <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -254,23 +262,23 @@ Convert to HTML and CSS<!DOCTYPE html>
             
             <div class="blog-cta">
                 <button class="btn-dark">
-                    <span>View All Articles</span>
+                    <span>すべての記事を見る</span>
                     <i class="fas fa-arrow-right"></i>
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- Offers Section -->
+    <!-- オファーセクション -->
     <section class="offers" id="offers">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">
-                    Special
-                    <span class="title-highlight">Offers</span>
+                    特別
+                    <span class="title-highlight">オファー</span>
                 </h2>
                 <p class="section-description">
-                    Don't miss out on our exclusive deals designed to help you start your fitness journey.
+                    フィットネスの旅を始めるのに役立つ独占的なお得な情報をお見逃しなく。
                 </p>
             </div>
             
@@ -283,18 +291,18 @@ Convert to HTML and CSS<!DOCTYPE html>
                                     <i class="fas fa-percent"></i>
                                     <span>50% OFF</span>
                                 </div>
-                                <h3 class="offer-title">New Member Special</h3>
-                                <p class="offer-description">Join now and get 50% off your first month plus a free personal training session</p>
+                                <h3 class="offer-title">新規会員スペシャル</h3>
+                                <p class="offer-description">今参加すると、最初の1ヶ月が50%オフ、さらに無料のパーソナルトレーニングセッションが付きます</p>
                                 <div class="offer-actions">
-                                    <button class="btn-primary">Claim Offer</button>
+                                    <button class="btn-primary">オファーを請求</button>
                                     <div class="offer-validity">
                                         <i class="fas fa-star"></i>
-                                        <span>Valid: Limited Time</span>
+                                        <span>有効期限: 限定時間</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="offer-image">
-                                <img src="https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="New Member Special">
+                                <img src="https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="新規会員スペシャル">
                             </div>
                         </div>
 
@@ -304,18 +312,18 @@ Convert to HTML and CSS<!DOCTYPE html>
                                     <i class="fas fa-percent"></i>
                                     <span>25% OFF</span>
                                 </div>
-                                <h3 class="offer-title">Student Discount</h3>
-                                <p class="offer-description">Students get 25% off all membership plans with valid student ID</p>
+                                <h3 class="offer-title">学生割引</h3>
+                                <p class="offer-description">有効な学生証提示で全ての会員プランが25%オフ</p>
                                 <div class="offer-actions">
-                                    <button class="btn-primary">Get Discount</button>
+                                    <button class="btn-primary">割引を取得</button>
                                     <div class="offer-validity">
                                         <i class="fas fa-star"></i>
-                                        <span>Valid: Academic Year</span>
+                                        <span>有効期限: 学年度</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="offer-image">
-                                <img src="https://images.pexels.com/photos/1431282/pexels-photo-1431282.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="Student Discount">
+                                <img src="https://images.pexels.com/photos/1431282/pexels-photo-1431282.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="学生割引">
                             </div>
                         </div>
 
@@ -323,20 +331,20 @@ Convert to HTML and CSS<!DOCTYPE html>
                             <div class="offer-content">
                                 <div class="offer-badge">
                                     <i class="fas fa-users"></i>
-                                    <span>GROUP RATES</span>
+                                    <span>グループ料金</span>
                                 </div>
-                                <h3 class="offer-title">Corporate Wellness</h3>
-                                <p class="offer-description">Bring your team! Corporate memberships starting at just $299 per employee</p>
+                                <h3 class="offer-title">企業向けウェルネス</h3>
+                                <p class="offer-description">チームをご招待ください！従業員1人あたりわずか$299から始まる法人会員</p>
                                 <div class="offer-actions">
-                                    <button class="btn-primary">Learn More</button>
+                                    <button class="btn-primary">詳細を見る</button>
                                     <div class="offer-validity">
                                         <i class="fas fa-star"></i>
-                                        <span>Valid: Ongoing</span>
+                                        <span>有効期限: 継続中</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="offer-image">
-                                <img src="https://images.pexels.com/photos/1552252/pexels-photo-1552252.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="Corporate Wellness">
+                                <img src="https://images.pexels.com/photos/1552252/pexels-photo-1552252.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="企業向けウェルネス">
                             </div>
                         </div>
                     </div>
@@ -358,16 +366,16 @@ Convert to HTML and CSS<!DOCTYPE html>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- お客様の声セクション -->
     <section class="testimonials" id="testimonials">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">
-                    Member
-                    <span class="title-highlight">Success Stories</span>
+                    会員の
+                    <span class="title-highlight">成功ストーリー</span>
                 </h2>
                 <p class="section-description">
-                    Real transformations from real people who chose to elevate their fitness journey with us.
+                    私たちと共にフィットネスの旅を高めることを選んだ実際の人々からの実際の変革。
                 </p>
             </div>
             
@@ -384,16 +392,16 @@ Convert to HTML and CSS<!DOCTYPE html>
                         <i class="fas fa-star"></i>
                     </div>
                     <p class="testimonial-content">
-                        "GymXcel completely transformed my approach to fitness. The trainers are exceptional and the facilities are world-class. I've never felt stronger or more confident."
+                        「ジムエクセルは私のフィットネスへのアプローチを完全に変えました。トレーナーは素晴らしく、施設は世界クラスです。これまで以上に強く、自信を持てるようになりました。」
                     </p>
                     <div class="testimonial-result">
-                        Lost 25 lbs in 4 months
+                        4ヶ月で25ポンド減量
                     </div>
                     <div class="testimonial-author">
-                        <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="Jennifer Martinez">
+                        <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="ジェニファー・マルティネス">
                         <div class="author-info">
-                            <h4>Jennifer Martinez</h4>
-                            <p>Marketing Executive</p>
+                            <h4>ジェニファー・マルティネス</h4>
+                            <p>マーケティングエグゼクティブ</p>
                         </div>
                     </div>
                 </div>
@@ -410,16 +418,16 @@ Convert to HTML and CSS<!DOCTYPE html>
                         <i class="fas fa-star"></i>
                     </div>
                     <p class="testimonial-content">
-                        "The personalized training programs and state-of-the-art equipment make all the difference. GymXcel isn't just a gym, it's a lifestyle upgrade."
+                        「個別のトレーニングプログラムと最先端の設備がすべての違いを生みます。ジムエクセルは単なるジムではなく、ライフスタイルのアップグレードです。」
                     </p>
                     <div class="testimonial-result">
-                        Gained 15 lbs muscle
+                        筋肉15ポンド増加
                     </div>
                     <div class="testimonial-author">
-                        <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="Michael Chen">
+                        <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="マイケル・チェン">
                         <div class="author-info">
-                            <h4>Michael Chen</h4>
-                            <p>Software Engineer</p>
+                            <h4>マイケル・チェン</h4>
+                            <p>ソフトウェアエンジニア</p>
                         </div>
                     </div>
                 </div>
@@ -436,103 +444,103 @@ Convert to HTML and CSS<!DOCTYPE html>
                         <i class="fas fa-star"></i>
                     </div>
                     <p class="testimonial-content">
-                        "As a busy entrepreneur, I needed a gym that maximizes results in minimal time. GymXcel's efficient programs and expert guidance deliver exactly that."
+                        「忙しい起業家として、最小限の時間で最大の結果を出すジムが必要でした。ジムエクセルの効率的なプログラムと専門家の指導がまさにそれを提供してくれます。」
                     </p>
                     <div class="testimonial-result">
-                        Improved overall fitness by 40%
+                        総合フィットネス40%向上
                     </div>
                     <div class="testimonial-author">
-                        <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="Sarah Johnson">
+                        <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="サラ・ジョンソン">
                         <div class="author-info">
-                            <h4>Sarah Johnson</h4>
-                            <p>Business Owner</p>
+                            <h4>サラ・ジョンソン</h4>
+                            <p>ビジネスオーナー</p>
                         </div>
                     </div>
                 </div>
             </div>
             
             <div class="testimonials-cta">
-                <p class="cta-text">Ready to write your own success story?</p>
-                <button class="btn-primary">Start Your Transformation</button>
+                <p class="cta-text">あなた自身の成功ストーリーを書き始める準備はできましたか？</p>
+                <button class="btn-primary">あなたの変革を始める</button>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- フッター -->
     <footer class="footer" id="contact">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <span class="logo-elite">ELITE</span><span class="logo-gym">GYM</span>
+                        <span class="logo-elite">ジム</span><span class="logo-gym">エクセル</span>
                     </div>
                     <p class="footer-description">
-                        Transform your body and mind with our world-class facilities, expert trainers, and premium equipment.
+                        世界クラスの施設、専門トレーナー、プレミアム設備で身体と心を変革しましょう。
                     </p>
                     <div class="footer-contact">
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>123 Fitness Street, Elite District, NY 10001</span>
+                            <span>フィットネスストリート123, エリート地区, 東京 100-0001</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <span>(555) 123-ELITE</span>
+                            <span>(03) 1234-5678</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            <span>info@GymXcel.com</span>
+                            <span>info@gymexcel.jp</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="footer-links">
-                    <h3>Quick Links</h3>
+                    <h3>クイックリンク</h3>
                     <ul>
-                        <li><a href="#membership-plans">Membership Plans</a></li>
-                        <li><a href="#personal-training">Personal Training</a></li>
-                        <li><a href="#classes">Group Classes</a></li>
-                        <li><a href="#nutrition">Nutrition Coaching</a></li>
-                        <li><a href="#corporate">Corporate Wellness</a></li>
-                        <li><a href="#student">Student Discounts</a></li>
+                        <li><a href="#membership-plans">会員プラン</a></li>
+                        <li><a href="#personal-training">パーソナルトレーニング</a></li>
+                        <li><a href="#classes">グループクラス</a></li>
+                        <li><a href="#nutrition">栄養指導</a></li>
+                        <li><a href="#corporate">企業向けウェルネス</a></li>
+                        <li><a href="#student">学生割引</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-support">
-                    <h3>Support</h3>
+                    <h3>サポート</h3>
                     <ul>
-                        <li><a href="#faq">FAQ</a></li>
-                        <li><a href="#support">Contact Support</a></li>
-                        <li><a href="#portal">Member Portal</a></li>
-                        <li><a href="#schedule">Class Schedule</a></li>
-                        <li><a href="#tours">Facility Tours</a></li>
-                        <li><a href="#safety">Safety Guidelines</a></li>
+                        <li><a href="#faq">よくある質問</a></li>
+                        <li><a href="#support">サポートに連絡</a></li>
+                        <li><a href="#portal">会員ポータル</a></li>
+                        <li><a href="#schedule">クラススケジュール</a></li>
+                        <li><a href="#tours">施設ツアー</a></li>
+                        <li><a href="#safety">安全ガイドライン</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-hours">
-                    <h3>Hours & Social</h3>
+                    <h3>営業時間 & ソーシャル</h3>
                     <div class="hours-info">
                         <div class="hours-header">
                             <i class="fas fa-clock"></i>
-                            <span>Opening Hours</span>
+                            <span>営業時間</span>
                         </div>
                         <div class="hours-list">
                             <div class="hours-item">
-                                <span>Mon - Fri:</span>
-                                <span>5:00 AM - 11:00 PM</span>
+                                <span>月～金:</span>
+                                <span>5:00 - 23:00</span>
                             </div>
                             <div class="hours-item">
-                                <span>Saturday:</span>
-                                <span>6:00 AM - 10:00 PM</span>
+                                <span>土曜日:</span>
+                                <span>6:00 - 22:00</span>
                             </div>
                             <div class="hours-item">
-                                <span>Sunday:</span>
-                                <span>7:00 AM - 9:00 PM</span>
+                                <span>日曜日:</span>
+                                <span>7:00 - 21:00</span>
                             </div>
                         </div>
                     </div>
                     <div class="social-links">
-                        <h4>Follow Us</h4>
+                        <h4>フォローする</h4>
                         <div class="social-icons">
                             <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -544,29 +552,29 @@ Convert to HTML and CSS<!DOCTYPE html>
             </div>
             
             <div class="footer-map">
-                <h3>Find Us</h3>
+                <h3>所在地</h3>
                 <div class="map-container">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.0994!2d-74.0059!3d40.7128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQyJzQ2LjEiTiA3NMKwMDAnMjEuMyJX!5e0!3m2!1sen!2sus!4v1635959000000!5m2!1sen!2sus"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.7479754683715!2d139.7432442152582!3d35.65858048019963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bbd9009ec09%3A0x481a93f0d2a409dd!2sTokyo%20Tower!5e0!3m2!1sen!2sjp!4v1635959000000!5m2!1sen!2sjp"
                         width="100%"
                         height="100%"
                         style="border:0;"
                         allowfullscreen=""
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"
-                        title="GymXcel Location">
+                        title="ジムエクセル所在地">
                     </iframe>
                 </div>
             </div>
             
             <div class="footer-bottom">
                 <div class="footer-copyright">
-                    <p>&copy; 2024 GymXcel. All rights reserved.</p>
+                    <p>&copy; 2024 ジムエクセル. すべての権利を保有。</p>
                 </div>
                 <div class="footer-legal">
-                    <a href="#privacy">Privacy Policy</a>
-                    <a href="#terms">Terms of Service</a>
-                    <a href="#cookies">Cookie Policy</a>
+                    <a href="#privacy">プライバシーポリシー</a>
+                    <a href="#terms">利用規約</a>
+                    <a href="#cookies">クッキーポリシー</a>
                 </div>
             </div>
         </div>

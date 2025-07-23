@@ -790,14 +790,6 @@
     min-height: 100px;
 }
 
-/* Active nav link */
-.nav-link.active {
-    color: #D4AF37;
-}
-
-.nav-link.active::after {
-    width: 100%;
-}
 
 /* Responsive Design */
 @media (max-width: 1024px) {
