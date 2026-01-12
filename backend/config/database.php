@@ -1,6 +1,11 @@
 <?php
 // config/database.php
 
+// $DB_HOST = 'localhost';
+// $DB_NAME = 'gymxcel';
+// $DB_USER = 'gymxcel';
+// $DB_PASS = 'letuan1998'; 
+// $DB_CHARSET = 'utf8mb4';
 $DB_HOST = 'localhost';
 $DB_NAME = 'gxcel';
 $DB_USER = 'root';
