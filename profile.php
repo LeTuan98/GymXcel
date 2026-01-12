@@ -61,11 +61,26 @@ if (!isset($_SESSION['user_id'])) {
         </div>
 
         <div class="input-group">
+          <label class="input-label">Neck (cm)</label>
+          <input type="number" class="input-field" id="neck" placeholder="38" min="15" max="300">
+        </div>
+
+        <div class="input-group">
+          <label class="input-label">Waist (cm)</label>
+          <input type="number" class="input-field" id="waist" placeholder="82" min="15" max="500">
+        </div>
+
+        <div class="input-group">
+          <label class="input-label">Hip (cm)</label>
+          <input type="number" class="input-field" id="hip" placeholder="95" min="15" max="500">
+        </div>
+
+        <div class="input-group">
           <label class="input-label">Gender</label>
           <select class="select-field" id="gender">
             <option value="">Select gender...</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
           </select>
         </div>
 
@@ -81,8 +96,8 @@ if (!isset($_SESSION['user_id'])) {
           </select>
         </div>
 
-        <button class="btn btn-primary" onclick="calculateMetrics()" style="width: 100%;">
-          Calculate Metrics
+        <button class="btn btn-primary" onclick="saveProfile()" style="width: 100%;">
+          UP Your Metrics
         </button>
       </div>
 
@@ -206,8 +221,8 @@ if (!isset($_SESSION['user_id'])) {
     </div>
   </div>
 
-  <script src="js/data.js"></script>
-  <script src="js/app.js"></script>
+  <!-- <script src="js/data.js"></script> -->
+  <!-- <script src="js/app.js"></script> -->
   <script src="js/profile.js"></script>
 </body>
 </html>

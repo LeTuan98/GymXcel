@@ -203,9 +203,9 @@ function renderMeal(meal) {
     let factor = Number(item.amount) / Number(item.food.serving);
     let nutrients = {
       calories: Math.round((item.food.calories || 0) * factor),
-      protein: ((item.food.protein || 0) * factor),
-      carbs: ((item.food.carbs || 0) * factor),
-      fat: ((item.food.fat || 0) * factor)
+      protein: Math.round((item.food.protein || 0) * factor),
+      carbs: Math.round((item.food.carbs || 0) * factor),
+      fat: Math.round((item.food.fat || 0) * factor)
     };
     totalCalories += nutrients.calories;
 
@@ -315,6 +315,31 @@ function updateCalorieOverview() {
 }
 
 
+function calculateNutrients(food, amount) {
+  const factor = amount / 100;
+
+  return {
+    calories: Math.round((food.calories || 0) * factor),
+    protein:  Math.round((food.protein  || 0) * factor * 10) / 10,
+    carbs:    Math.round((food.carbs    || 0) * factor * 10) / 10,
+    fat:      Math.round((food.fat      || 0) * factor * 10) / 10
+  };
+}
+
+
+function calculateMealTotals(mealItems) {
+  return mealItems.reduce((totals, item) => {
+    const nutrients = calculateNutrients(item.food, item.amount);
+
+    totals.calories += nutrients.calories || 0;
+    totals.protein  += nutrients.protein  || 0;
+    totals.carbs    += nutrients.carbs    || 0;
+    totals.fat      += nutrients.fat      || 0;
+
+    return totals;
+  }, { calories: 0, protein: 0, carbs: 0, fat: 0 });
+}
+
 
 /* =========================
    INIT
@@ -322,7 +347,8 @@ function updateCalorieOverview() {
 if (document.getElementById('currentDate')) {
   document.addEventListener('DOMContentLoaded', async () => {
     try {
-      await loadFoods();            // 1️⃣ load DB
+      await loadFoods(); 
+      await initProfile();          // 1️⃣ load DB
       populateFoodSelectors();      // 2️⃣ đổ vào select
       initDashboard();              // 3️⃣ render meal
     } catch (e) {

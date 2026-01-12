@@ -88,16 +88,16 @@ if (!isset($_SESSION['user_id'])) {
           <option value="fat">Fat</option>
         </select>
 
-        <label>Serving size</label>
+        <label>Serving size (g)</label>
         <input
           type="text"
           id="foodServing"
-          placeholder="100g / 1 scoop / 1 piece"
-          value="100g"
+          placeholder="100g"
+          value="100"
         >
 
         <label>Calories (per serving)</label>
-        <input type="number" id="foodCalories" placeholder="Calories" min = 0 required>
+        <input type="number" id="foodCalories" placeholder="Calories" min = 1 required>
 
         <label>Protein (g)</label>
         <input type="number" id="foodProtein" min = 0 required>
@@ -117,7 +117,7 @@ if (!isset($_SESSION['user_id'])) {
   </div>
 
   <script src="./js/data.js"></script>
-  <script src="./js/app.js"></script>
+  <!-- <script src="./js/app.js"></script> -->
   <script src="./js/foods.js"></script>
 </body>
 </html>

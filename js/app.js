@@ -1,86 +1,184 @@
 const AppState = {
   currentDate: new Date().toISOString().split('T')[0],
-  profile: null,
   goal: null,
   dailyTarget: 2000,
-  macros: null
+};
+let ProfileData = {
+  height: null,
+  weight: null,
+  age: null,
+  gender: null,
+  activityLevel: null,
+
+  neck: null,
+  waist: null,
+  hip: null,
+
+  goal: null
 };
 
-function saveProfile(profile) {
-  try {
-    localStorage.setItem('gymexcel_profile', JSON.stringify(profile));
-    AppState.profile = profile;
-  } catch (error) {
-    console.error('Error saving profile:', error);
-  }
-}
+let Metrics = {
+  bmi: null,
+  bmr: null,
+  tdee: null,
+  bdf: null
+};
 
-function loadProfile() {
+const activityMap = {
+  sedentary: 1.2,
+  light: 1.375,
+  moderate: 1.55,
+  active: 1.725,
+  very_active: 1.9
+};
+
+async function initProfile() {
   try {
-    const stored = localStorage.getItem('gymexcel_profile');
-    if (stored) {
-      AppState.profile = JSON.parse(stored);
-      return AppState.profile;
+    const res = await fetch('./backend/api/get_profile.php');
+    const data = await res.json();
+    if (!data) return;
+    
+    // Fill form
+    ProfileData.height = data.height ?? null;
+    ProfileData.weight = data.weight ?? null;
+    ProfileData.age = data.age ?? null;
+
+    if (data.gender) {
+      ProfileData.gender = data.gender === 'M' ? 'M' : 'F';
+    } else {
+      ProfileData.gender = null;
     }
-  } catch (error) {
-    console.error('Error loading profile:', error);
-  }
-  return null;
-}
 
-function saveGoal(goal, dailyTarget, macros) {
-  try {
-    const goalData = { goal, dailyTarget, macros };
-    localStorage.setItem('gymexcel_goal', JSON.stringify(goalData));
-    AppState.goal = goal;
-    AppState.dailyTarget = dailyTarget;
-    AppState.macros = macros;
-  } catch (error) {
-    console.error('Error saving goal:', error);
-  }
-}
+    ProfileData.activityLevel =
+      activityMap?.[data.activity_level] ?? null;
 
-function loadGoal() {
-  try {
-    const stored = localStorage.getItem('gymexcel_goal');
-    if (stored) {
-      const goalData = JSON.parse(stored);
-      AppState.goal = goalData.goal;
-      AppState.dailyTarget = goalData.dailyTarget;
-      AppState.macros = goalData.macros;
-      return goalData;
+    ProfileData.neck = data.neck ?? null;
+    ProfileData.waist = data.waist ?? null;
+    ProfileData.hip = data.hip ?? null;
+    ProfileData.goal = data.goal ?? null;
+
+    calculateMetrics();
+    if (ProfileData.goal) {
+      calculateGoal(ProfileData.goal);
+    }else {
+      if (!Metrics || typeof Metrics.tdee !== 'number') {
+        console.warn('Metrics.tdee is null, skip calculateGoal');
+      }else{
+        AppState.dailyTarget = Math.round(Metrics.tdee);
+      }
     }
-  } catch (error) {
-    console.error('Error loading goal:', error);
+    // console.log(AppState);
+    document.getElementById('targetCalories').textContent = AppState.dailyTarget;
+  } catch (e) {
+    console.error('Init profile error', e);
   }
-  return null;
 }
 
-function calculateNutrients(food, amount) {
-  const factor = amount / 100;
+function calculateMetrics() {
+  const data = ProfileData;
+  // ===== BMI =====
+  if (data.height && data.weight) {
+    Metrics.bmi = data.weight / ((data.height / 100) ** 2);
+  } else {
+    Metrics.bmi = null;
+  }
 
-  return {
-    calories: Math.round((food.calories || 0) * factor),
-    protein:  Math.round((food.protein  || 0) * factor * 10) / 10,
-    carbs:    Math.round((food.carbs    || 0) * factor * 10) / 10,
-    fat:      Math.round((food.fat      || 0) * factor * 10) / 10
-  };
+  // ===== BMR =====
+  if (data.height && data.weight && data.age && data.gender) {
+    if (data.gender === 'M') {
+      Metrics.bmr =
+        10 * data.weight +
+        6.25 * data.height -
+        5 * data.age +
+        5;
+    } else {
+      Metrics.bmr =
+        10 * data.weight +
+        6.25 * data.height -
+        5 * data.age -
+        161;
+    }
+  } else {
+    Metrics.bmr = null;
+  }
+
+  // ===== TDEE =====
+  if (Metrics.bmr && data.activityLevel) {
+    Metrics.tdee = Metrics.bmr * data.activityLevel;
+  } else {
+    Metrics.tdee = null;
+  }
+
+  // ===== BFP (Body Fat %) =====
+  if (
+    data.gender &&
+    data.height &&
+    data.neck &&
+    data.waist &&
+    (data.gender === 'M' || data.hip)
+  ) {
+    if (data.gender === 'M') {
+      Metrics.bfp =
+        495 / (
+          1.0324 -
+          0.19077 * Math.log10(data.waist - data.neck) +
+          0.15456 * Math.log10(data.height)
+        ) - 450;
+    } else {
+      Metrics.bfp =
+        495 / (
+          1.29579 -
+          0.35004 * Math.log10(data.waist + data.hip - data.neck) +
+          0.221 * Math.log10(data.height)
+        ) - 450;
+    }
+  } else {
+    Metrics.bfp = null;
+  }
 }
 
+function calculateGoal(goal) {
+  if (!Metrics || typeof Metrics.tdee !== 'number') {
+    console.warn('Metrics.tdee is null, skip calculateGoal');
+    return null;
+  }
 
-function calculateMealTotals(mealItems) {
-  return mealItems.reduce((totals, item) => {
-    const nutrients = calculateNutrients(item.food, item.amount);
+  let dailyTarget;
+  let proteinPercent, carbsPercent, fatPercent;
 
-    totals.calories += nutrients.calories || 0;
-    totals.protein  += nutrients.protein  || 0;
-    totals.carbs    += nutrients.carbs    || 0;
-    totals.fat      += nutrients.fat      || 0;
-
-    return totals;
-  }, { calories: 0, protein: 0, carbs: 0, fat: 0 });
+  switch (goal) {
+    case 'muscle-gain':
+      dailyTarget = Math.round(Metrics.tdee + 300);
+      proteinPercent = 30;
+      carbsPercent = 45;
+      fatPercent = 25;
+      break;
+    case 'fat-loss':
+      dailyTarget = Math.round(Metrics.tdee - 500);
+      proteinPercent = 40;
+      carbsPercent = 30;
+      fatPercent = 30;
+      break;
+    case 'weight-gain':
+      dailyTarget = Math.round(Metrics.tdee + 500);
+      proteinPercent = 25;
+      carbsPercent = 50;
+      fatPercent = 25;
+      break;
+    case 'weight-loss':
+      dailyTarget = Math.round(Metrics.tdee - 300);
+      proteinPercent = 35;
+      carbsPercent = 35;
+      fatPercent = 30;
+      break;
+    default:
+      dailyTarget = Math.round(Metrics.tdee);
+      proteinPercent = 30;
+      carbsPercent = 40;
+      fatPercent = 30;
+  }
+  AppState.dailyTarget = dailyTarget;
 }
-
 
 function formatDate(dateString) {
   const date = new Date(dateString);
@@ -107,4 +205,3 @@ function formatDate(dateString) {
   return date.toLocaleDateString('en-US', options);
 }
 
-loadGoal();
