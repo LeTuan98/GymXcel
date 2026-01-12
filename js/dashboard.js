@@ -112,10 +112,10 @@ async function addFood(meal) {
 
 
 async function removeFood(meal, id) {
-  if (!confirm('Remove this food?')) return;
+  // if (!confirm('Remove this food?')) return;
 
   const formData = new FormData();
-  formData.append('id', id);
+  formData.append('meal_id', id);
 
   await fetch('./backend/api/delete_meal.php', {
     method: 'POST',
@@ -124,6 +124,39 @@ async function removeFood(meal, id) {
 
   loadCurrentDateMeals();
 }
+
+async function editFood(meal, itemId) {
+  const item = currentMeals[meal].find(i => i.id === itemId);
+  if (!item) return;
+
+  const newAmount = prompt(
+    `Nhập số gram mới cho ${item.food.name}:`,
+    item.amount
+  );
+
+  if (newAmount === null) return; // bấm cancel
+
+  const amountNumber = Number(newAmount);
+  if (isNaN(amountNumber) || amountNumber <= 0) {
+    alert('Số gram không hợp lệ');
+    return;
+  }
+
+  item.amount = amountNumber;
+
+  renderMeal(meal);
+  updateCalorieOverview();
+    await fetch('./backend/api/update_meal.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({
+      id: item.id,
+      amount: amountNumber
+    })
+  });
+
+}
+
 
 /* =========================
    RENDER MEALS
@@ -142,7 +175,7 @@ function renderMeal(meal) {
   let totalCalories = 0;
   let html = '';
   
-  console.log(items);
+  // console.log(items);
   items.forEach(item => {
     let factor = Number(item.amount) / Number(item.food.serving);
     let nutrients = {
@@ -159,12 +192,30 @@ function renderMeal(meal) {
           <div class="food-name">${item.food.name}</div>
           <div class="food-amount">${item.amount}g</div>
           <div class="food-nutrients">
-            <span>Cal: ${nutrients.calories}</span>
-            <span>P: ${nutrients.protein.toFixed(1)}g</span>
-            <span>C: ${nutrients.carbs.toFixed(1)}g</span>
-            <span>F: ${nutrients.fat.toFixed(1)}g</span>
+            <div class="nutrient">
+              <span class="nutrient-label">Cal:</span>
+              <span class="nutrient-value">${nutrients.calories}</span>
+            </div>
+            <div class="nutrient">
+              <span class="nutrient-label">P:</span>
+              <span class="nutrient-value">${nutrients.protein}g</span>
+            </div>
+            <div class="nutrient">
+              <span class="nutrient-label">C:</span>
+              <span class="nutrient-value">${nutrients.carbs}g</span>
+            </div>
+            <div class="nutrient">
+              <span class="nutrient-label">F:</span>
+              <span class="nutrient-value">${nutrients.fat}g</span>
+            </div>
           </div>
         </div>
+        <button class="edit-btn" onclick="editFood('${meal}', ${item.id})">✏️</button>
+        <button class="remove-btn" onclick="removeFood('${meal}', ${item.id})">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
       </div>
     `;
   });
