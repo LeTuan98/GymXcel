@@ -45,10 +45,11 @@ async function handleLogin(e) {
             return;
         }
 
-        showSuccessMessage('Welcome back!');
+        let user_name = data.user.name;
+        showSuccessMessage(user_name + 'さん、おかえり!');
         setTimeout(() => {
             window.location.href = 'index.php';
-        }, 1000);
+        }, 2000);
 
     } catch (err) {
         hideLoading(btn, 'Sign In');
@@ -104,11 +105,11 @@ async function handleRegister(e) {
             showErrorMessage(data.error);
             return;
         }
-
-        showSuccessMessage('Account created successfully!');
+        let user_name = data.user.name;
+        showSuccessMessage( user_name+ 'さん、こんにちは、これからよろしくね!');
         setTimeout(() => {
-            window.location.href = 'login.php';
-        }, 1200);
+            window.location.href = 'profile.php';
+        }, 3000);
 
     } catch (error) {
         hideLoading(btn, 'Create Account');

@@ -62,6 +62,7 @@ async function initProfile() {
 
     calculateMetrics();
     displayMetrics();
+    toggleHipField();
     renderProfile();
     bindProfileEvents();
     if (ProfileData.goal) {
@@ -381,6 +382,25 @@ async function saveProfile() {
   }
 }
 
+function toggleHipField() {
+  const hipGroup = document.getElementById('hipGroup');
+  if (!hipGroup) return;
+
+  if (ProfileData.gender === 'M') {
+    hipGroup.style.display = 'none';
+    ProfileData.hip = null;   // ❗ rất quan trọng
+  } else {
+    hipGroup.style.display = 'block';
+  }
+}
+
+document.getElementById('gender').addEventListener('change', (e) => {
+  ProfileData.gender = e.target.value;
+  toggleHipField();
+
+  calculateMetrics();
+  displayMetrics();
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('bmiValue')) {

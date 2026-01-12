@@ -69,12 +69,7 @@ if (!isset($_SESSION['user_id'])) {
           <label class="input-label">Waist (cm)</label>
           <input type="number" class="input-field" id="waist" placeholder="82" min="15" max="500">
         </div>
-
-        <div class="input-group">
-          <label class="input-label">Hip (cm)</label>
-          <input type="number" class="input-field" id="hip" placeholder="95" min="15" max="500">
-        </div>
-
+  
         <div class="input-group">
           <label class="input-label">Gender</label>
           <select class="select-field" id="gender">
@@ -84,6 +79,11 @@ if (!isset($_SESSION['user_id'])) {
           </select>
         </div>
 
+        <div class="input-group" id="hipGroup">
+          <label class="input-label">Hip (cm)</label>
+          <input type="number" class="input-field" id="hip" placeholder="95" min="15" max="500">
+        </div>
+        
         <div class="input-group">
           <label class="input-label">Activity Level</label>
           <select class="select-field" id="activityLevel">

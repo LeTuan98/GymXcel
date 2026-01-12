@@ -89,7 +89,30 @@ $_SESSION['user_name'] = $name;
 // =======================
 // RESPONSE
 // =======================
+
+
+$sql = "
+INSERT INTO foods (
+  user_id, name, category,
+  standard_amount, calo, protein, carb, fat
+)
+SELECT
+  :user_id, name, category,
+  standard_amount, calo, protein, carb, fat
+FROM default_foods
+WHERE is_active = 1
+";
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute([
+  'user_id' => $userId
+]);
+
 echo json_encode([
     'success' => true,
-    'message' => 'Registration successful'
+    'message' => 'Registration successful',
+    'user' => [
+        'id' => $userId,
+        'name' => $name
+    ]
 ]);
