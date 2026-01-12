@@ -320,3 +320,27 @@
     gap: 0.25rem;
   }
 }
+
+/* food amount inline edit */
+.inline-amount {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* override width cho input trong food list */
+.inline-amount .amount-input {
+  width: 60px;        /* 👈 nhỏ gọn */
+  padding: 4px 6px;   /* 👈 thấp lại */
+  text-align: center;
+}
+
+/* chữ g */
+.amount-unit {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.amount-input.saving {
+  border-color: orange;
+}

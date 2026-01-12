@@ -4,6 +4,8 @@ let currentMeals = {
   dinner: []
 };
 
+let updateAmountTimers = {};
+
 async function initDashboard() {
   updateDateDisplay();
   await loadCurrentDateMeals();
@@ -125,36 +127,57 @@ async function removeFood(meal, id) {
   loadCurrentDateMeals();
 }
 
-async function editFood(meal, itemId) {
+async function updateMealAmount(meal, itemId, value) {
+const input = document.querySelector(
+    `.amount-input[data-id="${itemId}"]`
+  );
+
+  const amount = Number(value);
+  if (isNaN(amount) || amount <= 0) return;
+
   const item = currentMeals[meal].find(i => i.id === itemId);
   if (!item) return;
 
-  const newAmount = prompt(
-    `Nhập số gram mới cho ${item.food.name}:`,
-    item.amount
-  );
-
-  if (newAmount === null) return; // bấm cancel
-
-  const amountNumber = Number(newAmount);
-  if (isNaN(amountNumber) || amountNumber <= 0) {
-    alert('Số gram không hợp lệ');
-    return;
-  }
-
-  item.amount = amountNumber;
+  item.amount = amount;
 
   renderMeal(meal);
   updateCalorieOverview();
-    await fetch('./backend/api/update_meal.php', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams({
-      id: item.id,
-      amount: amountNumber
-    })
-  });
 
+  // 👉 nếu dùng DB
+  try {
+    await fetch('./backend/api/update_meal.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        id: itemId,
+        amount: amount
+      })
+    });
+  } catch (e) {
+    console.error('Update meal failed', e);
+  }
+  if (input) {
+    input.classList.remove('saving'); // 👈 LƯU XONG
+  }
+}
+
+
+function debounceUpdateAmount(meal, itemId, value) {
+   const input = document.querySelector(
+    `.amount-input[data-id="${itemId}"]`
+  );
+
+  if (input) {
+    input.classList.add('saving'); // 👈 BẮT ĐẦU lưu
+  }
+
+  if (updateAmountTimers[itemId]) {
+    clearTimeout(updateAmountTimers[itemId]);
+  }
+
+  updateAmountTimers[itemId] = setTimeout(() => {
+    updateMealAmount(meal, itemId, value);
+  }, 2000); // ⏱ 3 giây
 }
 
 
@@ -190,7 +213,16 @@ function renderMeal(meal) {
       <div class="food-item">
         <div class="food-info">
           <div class="food-name">${item.food.name}</div>
-          <div class="food-amount">${item.amount}g</div>
+          <div class="food-amount inline-amount">
+            <input
+              type="number"
+              class="input-field amount-input"
+              min="1"
+              value="${item.amount}"
+              oninput="debounceUpdateAmount('${meal}', ${item.id}, this.value)"
+            />
+            <span class="amount-unit">g</span>
+          </div>
           <div class="food-nutrients">
             <div class="nutrient">
               <span class="nutrient-label">Cal:</span>
@@ -210,7 +242,6 @@ function renderMeal(meal) {
             </div>
           </div>
         </div>
-        <button class="edit-btn" onclick="editFood('${meal}', ${item.id})">✏️</button>
         <button class="remove-btn" onclick="removeFood('${meal}', ${item.id})">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
