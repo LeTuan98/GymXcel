@@ -1,5 +1,6 @@
 let currentFilter = 'all';
 let searchQuery = '';
+let editingFoodId = null;
 
 function initFoods() {
   renderFoods();
@@ -26,7 +27,7 @@ function filterFoods() {
 }
 
 function getFilteredFoods() {
-  let foods = FOODS_DATA;
+  let foods = FOODS_DATA.filter(Boolean);
 
   if (currentFilter !== 'all') {
     foods = foods.filter(food => food.category === currentFilter);
@@ -67,7 +68,23 @@ function renderFoods() {
             <div class="food-card-title">${food.name}</div>
             <div class="food-card-serving">per ${food.serving}</div>
           </div>
-          <span class="food-card-category ${categoryClass}">${food.category}</span>
+          <div class="food-card-actions">
+            <span class="food-card-category ${categoryClass}">
+              ${food.category}
+            </span>
+
+            <button
+              class="icon-btn edit"
+              title="Edit"
+              onclick="openEditFood(${food.id})"
+            >✏️</button>
+
+            <button
+              class="icon-btn delete"
+              title="Delete"
+              onclick="deleteFood(${food.id})"
+            >🗑</button>
+          </div>
         </div>
 
         <div class="food-card-nutrients">
@@ -96,6 +113,137 @@ function renderFoods() {
   foodsGrid.innerHTML = html;
 }
 
-if (document.getElementById('foodsGrid')) {
-  initFoods();
+// open add food
+function openAddFood() {
+  document.getElementById('addFoodModal').classList.remove('hidden');
 }
+
+function closeAddFood() {
+  document.getElementById('addFoodModal').classList.add('hidden');
+  document.querySelector('#addFoodModal h2').textContent = 'Add Food';
+  document.getElementById('save_form').textContent = 'Add';
+  document.getElementById('foodName').value = null;
+  document.getElementById('foodCategory').value = "";
+  document.getElementById('foodServing').value = 100;
+  document.getElementById('foodCalories').value = null;
+  document.getElementById('foodProtein').value = null;
+  document.getElementById('foodCarbs').value = null;
+  document.getElementById('foodFat').value = null;
+  editingFoodId = null;
+}
+
+function addFood() {
+  const data = {
+    name: document.getElementById('foodName').value.trim(),
+    category: document.getElementById('foodCategory').value,
+    serving: document.getElementById('foodServing').value || '100g',
+    calories: Number(document.getElementById('foodCalories').value),
+    protein: Number(document.getElementById('foodProtein').value),
+    carbs: Number(document.getElementById('foodCarbs').value),
+    fat: Number(document.getElementById('foodFat').value)
+  };
+
+  fetch('./backend/api/add_food.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(res => {
+    if (res.success && res.data) {
+      FOODS_DATA.unshift(res.data);
+      renderFoods();
+      closeAddFood();
+    }
+  })
+  .catch(err => {
+    console.error(err);
+    alert('Failed to add food');
+  });
+}
+
+
+
+async function deleteFood(id) {
+  // if (!confirm('Delete this food?')) return;
+
+  await fetch('./backend/api/delete_food.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `id=${id}`
+  });
+  // console.log(FOODS_DATA);
+  FOODS_DATA = FOODS_DATA.filter(f => f.id !== id);
+  // console.log(FOODS_DATA);
+  renderFoods();
+}
+
+function openEditFood(id) {
+  const food = FOODS_DATA.find(f => f.id == id);
+  if (!food) return;
+
+  editingFoodId = id;
+
+  document.getElementById('foodName').value = food.name;
+  document.getElementById('foodCategory').value = food.category;
+  document.getElementById('foodServing').value = food.serving;
+  document.getElementById('foodCalories').value = food.calories;
+  document.getElementById('foodProtein').value = food.protein;
+  document.getElementById('foodCarbs').value = food.carbs;
+  document.getElementById('foodFat').value = food.fat;
+
+  document.querySelector('#addFoodModal h2').textContent = 'Edit Food';
+  document.getElementById('save_form').textContent = 'Update';
+
+  openAddFood();
+}
+
+function updateFood() {
+  const data = {
+    id: editingFoodId,
+    name: foodName.value.trim(),
+    category: foodCategory.value,
+    serving: foodServing.value,
+    calories: Number(foodCalories.value),
+    protein: Number(foodProtein.value),
+    carbs: Number(foodCarbs.value),
+    fat: Number(foodFat.value)
+  };
+
+  if (!editingFoodId) return;
+
+  fetch('./backend/api/update_food.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+    .then(res => res.json())
+    .then(res => {
+      if (res.success) {
+        const index = FOODS_DATA.findIndex(f => f.id === editingFoodId);
+        FOODS_DATA[index] = res.data;
+        renderFoods();
+        closeAddFood();
+      }
+    });
+}
+
+
+if (document.getElementById('foodsGrid')) {
+  document.addEventListener('DOMContentLoaded', async () => {
+    await loadFoods();   // ⬅️ đợi DB
+    initFoods();         // ⬅️ lúc này FOODS_DATA mới có
+  });
+}
+
+document.getElementById('addFoodForm')
+  .addEventListener('submit', function (e) {
+    e.preventDefault(); // ⛔ chặn reload
+    if (editingFoodId) {
+      updateFood();
+    } else {
+      addFood();
+    }
+  });
+
+  

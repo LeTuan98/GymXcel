@@ -20,6 +20,7 @@ try {
         SELECT 
             id,
             name,
+            category,
             standard_amount AS serving,
             calo AS calories,
             protein,

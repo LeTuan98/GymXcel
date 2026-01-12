@@ -30,7 +30,7 @@ if (!isset($_SESSION['user_id'])) {
       </a>
       <nav>
         <a href="index.php" class="nav-link">Dashboard</a>
-        <a href="profile.php" class="nav-link">Profile & Goals</a>
+        <a href="profile.php" class="nav-link">MySelf</a>
         <a href="foods.php" class="nav-link active">Foods</a>
         <a href="./backend/auth/logout.php" class="nav-link">Logout</a>
       </nav>
@@ -56,6 +56,7 @@ if (!isset($_SESSION['user_id'])) {
         <button class="filter-btn" data-filter="protein" onclick="setFilter('protein')">Protein</button>
         <button class="filter-btn" data-filter="carbs" onclick="setFilter('carbs')">Carbs</button>
         <button class="filter-btn" data-filter="fat" onclick="setFilter('fat')">Fat</button>
+        <button class="btn btn-primary" onclick="openAddFood()">+ Add Food</button>
       </div>
     </div>
 
@@ -72,8 +73,51 @@ if (!isset($_SESSION['user_id'])) {
     </div>
   </div>
 
-  <script src="js/data.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/foods.js"></script>
+  <div class="modal hidden" id="addFoodModal">
+    <div class="modal-content">
+      <h2>Add Food</h2>
+      <form id="addFoodForm">
+        <label>Food name</label>
+        <input type="text" id="foodName" placeholder="Chicken breast" required>
+
+        <label>Category</label>
+        <select id="foodCategory" required>
+          <option value="">Select category</option>
+          <option value="protein">Protein</option>
+          <option value="carbs">Carbs</option>
+          <option value="fat">Fat</option>
+        </select>
+
+        <label>Serving size</label>
+        <input
+          type="text"
+          id="foodServing"
+          placeholder="100g / 1 scoop / 1 piece"
+          value="100g"
+        >
+
+        <label>Calories (per serving)</label>
+        <input type="number" id="foodCalories" placeholder="Calories" min = 0 required>
+
+        <label>Protein (g)</label>
+        <input type="number" id="foodProtein" min = 0 required>
+
+        <label>Carbs (g)</label>
+        <input type="number" id="foodCarbs" min = 0 required>
+
+        <label>Fat (g)</label>
+        <input type="number" id="foodFat" min = 0 required>
+
+        <div class="modal-actions">
+          <button class="btn-cancel" type="button" onclick="closeAddFood()">Cancel</button>
+          <button class="btn-primary btn-lg" id ="save_form" type="submit" >Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="./js/data.js"></script>
+  <script src="./js/app.js"></script>
+  <script src="./js/foods.js"></script>
 </body>
 </html>

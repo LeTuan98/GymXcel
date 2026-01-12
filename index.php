@@ -30,7 +30,7 @@ if (!isset($_SESSION['user_id'])) {
       </a>
       <nav>
         <a href="index.php" class="nav-link active">Dashboard</a>
-        <a href="profile.php" class="nav-link">Profile & Goals</a>
+        <a href="profile.php" class="nav-link">MySelf</a>
         <a href="foods.php" class="nav-link">Foods</a>
         <a href="./backend/auth/logout.php" class="nav-link">Logout</a>
       </nav>
