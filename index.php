@@ -54,17 +54,17 @@ if (!isset($_SESSION['user_id'])) {
 
     <div class="calorie-overview">
       <div class="overview-card target">
-        <div class="overview-label">Daily Target</div>
+        <div class="overview-label">Daily Target / 1日の目標</div>
         <div class="overview-value" id="targetCalories">2000</div>
         <div class="overview-subtitle">kcal</div>
       </div>
       <div class="overview-card consumed">
-        <div class="overview-label">Consumed</div>
+        <div class="overview-label">Consumed / 摂取済み</div>
         <div class="overview-value" id="consumedCalories">0</div>
         <div class="overview-subtitle">kcal</div>
       </div>
       <div class="overview-card remaining">
-        <div class="overview-label">Remaining</div>
+        <div class="overview-label">Remaining / 残り</div>
         <div class="overview-value" id="remainingCalories">2000</div>
         <div class="overview-subtitle">kcal</div>
       </div>
@@ -145,7 +145,7 @@ if (!isset($_SESSION['user_id'])) {
     </div>
 
     <div class="totals-card">
-      <h2 class="card-title mb-3" style="color: white;">Daily Totals</h2>
+      <h2 class="card-title mb-3" style="color: white;">Daily Totals / 1日の合計</h2>
       <div class="totals-grid">
         <div class="total-item">
           <div class="total-label">Calories</div>

@@ -39,8 +39,8 @@ if (!isset($_SESSION['user_id'])) {
 
   <div class="container">
     <div class="card mb-3">
-      <h1 style="font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">Food Database</h1>
-      <p style="color: var(--text-secondary);">Browse and search through our nutrition database</p>
+      <h1 style="font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">Food Database / 食品データベース</h1>
+      <p style="color: var(--text-secondary);">Browse and search through our nutrition database / 栄養データベースを閲覧・検索できます</p>
     </div>
 
     <div class="filters-section">
@@ -68,8 +68,8 @@ if (!isset($_SESSION['user_id'])) {
         <circle cx="12" cy="12" r="10"/>
         <path d="M12 6v6l4 2"/>
       </svg>
-      <div class="empty-state-title">No foods found</div>
-      <div class="empty-state-description">Try adjusting your search or filters</div>
+      <div class="empty-state-title">No foods found / 該当する食品が見つかりません</div>
+      <div class="empty-state-description">Try adjusting your search or filters / 検索条件やフィルターを調整してみてください</div>
     </div>
   </div>
 
