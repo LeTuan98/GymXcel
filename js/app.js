@@ -3,6 +3,13 @@ const AppState = {
   goal: null,
   dailyTarget: 2000,
 };
+
+const macros = {
+  protein: null,
+  carbs: null,
+  fat: null
+};
+
 let ProfileData = {
   height: null,
   weight: null,
@@ -67,8 +74,14 @@ async function initProfile() {
         AppState.dailyTarget = Math.round(Metrics.tdee);
       }
     }
-    // console.log(AppState);
+    
     document.getElementById('targetCalories').textContent = AppState.dailyTarget;
+    if (macros.protein){
+      document.getElementById('proteinGoal').textContent = macros.protein + "g";
+      document.getElementById('carbsGoal').textContent = macros.carbs + "g";
+      document.getElementById('fatGoal').textContent = macros.fat + "g";
+    };
+
   } catch (e) {
     console.error('Init profile error', e);
   }
@@ -178,6 +191,14 @@ function calculateGoal(goal) {
       fatPercent = 30;
   }
   AppState.dailyTarget = dailyTarget;
+  const proteinGrams = Math.round((dailyTarget * proteinPercent / 100) / 4);
+  const carbsGrams = Math.round((dailyTarget * carbsPercent / 100) / 4);
+  const fatGrams = Math.round((dailyTarget * fatPercent / 100) / 9);
+
+  macros.protein = proteinGrams;
+  macros.carbs = carbsGrams;
+  macros.fat = fatGrams;
+
 }
 
 function formatDate(dateString) {

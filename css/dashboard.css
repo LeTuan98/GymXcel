@@ -344,3 +344,83 @@
 .amount-input.saving {
   border-color: orange;
 }
+
+.macros-card {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
+  color: white;
+  border: none;
+}
+
+.macros-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.macro-item {
+  text-align: center;
+}
+
+.macro-label {
+  font-size: 0.875rem;
+  opacity: 0.9;
+  margin-bottom: 0.75rem;
+}
+
+.macro-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.macro-bar {
+  width: 100%;
+  height: 0.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.macro-bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.macro-bar-fill.protein {
+  background: #ef4444;
+}
+
+.macro-bar-fill.carbs {
+  background: #f59e0b;
+}
+
+.macro-bar-fill.fat {
+  background: #8b5cf6;
+}
+
+.macro-percentage {
+  font-size: 0.875rem;
+  opacity: 0.85;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .profile-container {
+    grid-template-columns: 1fr;
+  }
+
+  .goals-section {
+    grid-column: 1;
+  }
+
+  .macros-card {
+    grid-column: 1;
+  }
+
+  .stat-result-value {
+    font-size: 1.75rem;
+  }
+}

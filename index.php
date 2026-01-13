@@ -144,7 +144,7 @@ if (!isset($_SESSION['user_id'])) {
       </div>
     </div>
 
-    <div class="totals-card">
+    <!-- <div class="totals-card">
       <h2 class="card-title mb-3" style="color: white;">Daily Totals / 1日の合計</h2>
       <div class="totals-grid">
         <div class="total-item">
@@ -164,7 +164,49 @@ if (!isset($_SESSION['user_id'])) {
           <div class="total-value" id="totalFat">0<span class="total-unit">g</span></div>
         </div>
       </div>
-    </div>
+    </div> -->
+
+    <div class="card macros-card" id="macrosCard">
+        <div class="card-header" style="border-color: rgba(255, 255, 255, 0.2);">
+          <h2 class="card-title" style="color: white;">Daily Totals / 1日の合計</h2>
+          <!-- <p class="card-subtitle" style="color: rgba(255, 255, 255, 0.85);"><span id="selectedGoalText"></span></p> -->
+        </div>
+
+        <div class="macros-grid">
+          <div class="macro-item">
+            <div class="macro-label">Totals Calories / 摂取カロリー</div>
+            <div class="macro-value" id="goalCalories">--</div>
+            <div class="macro-percentage">kcal</div>
+          </div>
+
+          <div class="macro-item">
+            <div class="macro-label">Protein / たんぱく質</div>
+            <div class="macro-value" ><span id="proteinValue">--</span> / <span id="proteinGoal">--</span></div>
+            <div class="macro-bar">
+              <div class="progress-fill protein" id="proteinBar" style="width: 0%"></div>
+            </div>
+            <div class="macro-percentage" id="proteinPercent">--</div>
+          </div>
+
+          <div class="macro-item">
+            <div class="macro-label">Carbs / 炭水化物</div>
+            <div class="macro-value" ><span id="carbsValue">--</span> / <span id="carbsGoal">--</span></div>
+            <div class="macro-bar">
+              <div class="progress-fill carbs" id="carbsBar" style="width: 0%"></div>
+            </div>
+            <div class="macro-percentage" id="carbsPercent">--</div>
+          </div>
+
+          <div class="macro-item">
+            <div class="macro-label">Fat / 脂質</div>
+            <div class="macro-value" ><span id="fatValue">--</span> / <span id="fatGoal">--</span></div>
+            <div class="macro-bar">
+              <div class="progress-fill fat" id="fatBar" style="width: 0%"></div>
+            </div>
+            <div class="macro-percentage" id="fatPercent">--</div>
+          </div>
+        </div>
+      </div>
   </div>
 
   <script src="js/data.js"></script>

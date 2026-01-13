@@ -297,13 +297,18 @@ function updateCalorieOverview() {
   // ===== OVERVIEW =====
   document.getElementById('consumedCalories').textContent = Math.round(totals.calories);
   document.getElementById('remainingCalories').textContent =
-    Math.max(0, AppState.dailyTarget - totals.calories);
+    Math.max(0, Math.round(AppState.dailyTarget - totals.calories));
 
   // ===== TOTALS =====
-  document.getElementById('totalCalories').textContent = Math.round(totals.calories);
-  document.getElementById('totalProtein').textContent = totals.protein.toFixed(1);
-  document.getElementById('totalCarbs').textContent   = totals.carbs.toFixed(1);
-  document.getElementById('totalFat').textContent     = totals.fat.toFixed(1);
+  // document.getElementById('totalCalories').textContent = Math.round(totals.calories);
+  // document.getElementById('totalProtein').textContent = totals.protein.toFixed(1);
+  // document.getElementById('totalCarbs').textContent   = totals.carbs.toFixed(1);
+  // document.getElementById('totalFat').textContent     = totals.fat.toFixed(1);
+
+  document.getElementById('goalCalories').textContent = Math.round(totals.calories);
+  document.getElementById('proteinValue').textContent = Math.round(totals.protein) + 'g';
+  document.getElementById('carbsValue').textContent   = Math.round(totals.carbs) + 'g';
+  document.getElementById('fatValue').textContent     = Math.round(totals.fat) + 'g';
 
   // ===== PROGRESS =====
   const progress = AppState.dailyTarget > 0
@@ -312,6 +317,24 @@ function updateCalorieOverview() {
 
   document.getElementById('progressFill').style.width = `${progress}%`;
   document.getElementById('progressPercent').textContent = `${Math.round(progress)}%`;
+// 
+  const progressProtein = macros.protein
+    ? ((totals.protein / macros.protein) * 100)
+    : 0;
+  document.getElementById('proteinBar').style.width = `${Math.min(100,progressProtein)}%`;
+  document.getElementById('proteinPercent').textContent = `${Math.round(progressProtein)}%`;
+// 
+  const progressCarbs = macros.carbs
+    ? ((totals.carbs / macros.carbs) * 100)
+    : 0;
+  document.getElementById('carbsBar').style.width = `${Math.min(100,progressCarbs)}%`;
+  document.getElementById('carbsPercent').textContent = `${Math.round(progressCarbs)}%`;
+// 
+  const progressFat = macros.fat
+    ? ((totals.fat / macros.fat) * 100)
+    : 0;
+  document.getElementById('fatBar').style.width = `${Math.min(100,progressFat)}%`;
+  document.getElementById('fatPercent').textContent = `${Math.round(progressFat)}%`;
 }
 
 
