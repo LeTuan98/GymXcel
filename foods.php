@@ -8,11 +8,11 @@ if (!isset($_SESSION['user_id'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GymExcel - 食品</title>
+  <title>GymExcel - Foods</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -29,18 +29,18 @@ if (!isset($_SESSION['user_id'])) {
         GymExcel
       </a>
       <nav>
-        <a href="index.php" class="nav-link">ダッシュボード</a>
-        <a href="profile.php" class="nav-link">マイページ</a>
-        <a href="foods.php" class="nav-link active">食品</a>
-        <a href="./backend/auth/logout.php" class="nav-link">ログアウト</a>
+        <a href="index.php" class="nav-link">Dashboard</a>
+        <a href="profile.php" class="nav-link">My Page</a>
+        <a href="foods.php" class="nav-link active">Foods</a>
+        <a href="./backend/auth/logout.php" class="nav-link">Logout</a>
       </nav>
     </div>
   </header>
 
   <div class="container">
     <div class="card mb-3">
-      <h1 style="font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">食品データベース</h1>
-      <p style="color: var(--text-secondary);">栄養データベースを検索・閲覧できます</p>
+      <h1 style="font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">Food Database</h1>
+      <p style="color: var(--text-secondary);">Search and browse nutritional data</p>
     </div>
 
     <div class="filters-section">
@@ -48,15 +48,15 @@ if (!isset($_SESSION['user_id'])) {
         type="text"
         class="search-input"
         id="searchInput"
-        placeholder="食品を検索..."
+        placeholder="Search foods..."
         onkeyup="filterFoods()"
       >
       <div class="filter-buttons">
-        <button class="filter-btn active" data-filter="all" onclick="setFilter('all')">すべて</button>
-        <button class="filter-btn" data-filter="protein" onclick="setFilter('protein')">タンパク質</button>
-        <button class="filter-btn" data-filter="carbs" onclick="setFilter('carbs')">炭水化物</button>
-        <button class="filter-btn" data-filter="fat" onclick="setFilter('fat')">脂質</button>
-        <button class="btn btn-primary" onclick="openAddFood()">＋ 食品を追加</button>
+        <button class="filter-btn active" data-filter="all" onclick="setFilter('all')">All</button>
+        <button class="filter-btn" data-filter="protein" onclick="setFilter('protein')">Protein</button>
+        <button class="filter-btn" data-filter="carbs" onclick="setFilter('carbs')">Carbohydrates</button>
+        <button class="filter-btn" data-filter="fat" onclick="setFilter('fat')">Fat</button>
+        <button class="btn btn-primary" onclick="openAddFood()">＋ Add Food</button>
       </div>
     </div>
 
@@ -68,27 +68,27 @@ if (!isset($_SESSION['user_id'])) {
         <circle cx="12" cy="12" r="10"/>
         <path d="M12 6v6l4 2"/>
       </svg>
-      <div class="empty-state-title">食品が見つかりません</div>
-      <div class="empty-state-description">検索条件やフィルターを変更してみてください</div>
+      <div class="empty-state-title">No foods found</div>
+      <div class="empty-state-description">Try changing your search or filters</div>
     </div>
   </div>
 
   <div class="modal hidden" id="addFoodModal">
     <div class="modal-content">
-      <h2>食品を追加</h2>
+      <h2>Add Food</h2>
       <form id="addFoodForm">
-        <label>食品名</label>
-        <input type="text" id="foodName" placeholder="鶏むね肉" required>
+        <label>Food Name</label>
+        <input type="text" id="foodName" placeholder="Chicken breast" required>
 
-        <label>カテゴリー</label>
+        <label>Category</label>
         <select id="foodCategory" required>
-          <option value="">カテゴリーを選択</option>
-          <option value="protein">タンパク質</option>
-          <option value="carbs">炭水化物</option>
-          <option value="fat">脂質</option>
+          <option value="">Select category</option>
+          <option value="protein">Protein</option>
+          <option value="carbs">Carbohydrates</option>
+          <option value="fat">Fat</option>
         </select>
 
-        <label>1食分の量 (g)</label>
+        <label>Serving Size (g)</label>
         <input
           type="text"
           id="foodServing"
@@ -96,21 +96,21 @@ if (!isset($_SESSION['user_id'])) {
           value="100"
         >
 
-        <label>カロリー（1食分）</label>
-        <input type="number" id="foodCalories" placeholder="カロリー" min="1" required>
+        <label>Calories (per serving)</label>
+        <input type="number" id="foodCalories" placeholder="Calories" min="1" required>
 
-        <label>タンパク質 (g)</label>
+        <label>Protein (g)</label>
         <input type="number" id="foodProtein" min="0" required>
 
-        <label>炭水化物 (g)</label>
+        <label>Carbohydrates (g)</label>
         <input type="number" id="foodCarbs" min="0" required>
 
-        <label>脂質 (g)</label>
+        <label>Fat (g)</label>
         <input type="number" id="foodFat" min="0" required>
 
         <div class="modal-actions">
-          <button class="btn-cancel" type="button" onclick="closeAddFood()">キャンセル</button>
-          <button class="btn-primary btn-lg" id="save_form" type="submit">追加</button>
+          <button class="btn-cancel" type="button" onclick="closeAddFood()">Cancel</button>
+          <button class="btn-primary btn-lg" id="save_form" type="submit">Add</button>
         </div>
       </form>
     </div>
