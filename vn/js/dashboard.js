@@ -14,13 +14,13 @@ async function initDashboard() {
   document.getElementById('nextDay').addEventListener('click', () => changeDate(1));
 }
 
-function changeDate(days) {
+async function changeDate(days) {
   const currentDate = new Date(AppState.currentDate);
   currentDate.setDate(currentDate.getDate() + days);
   AppState.currentDate = currentDate.toISOString().split('T')[0];
 
   updateDateDisplay();
-  loadCurrentDateMeals();
+  await loadCurrentDateMeals();
 }
 
 function populateFoodSelectors() {
@@ -35,7 +35,7 @@ function populateFoodSelectors() {
     FOODS_DATA.forEach(food => {
       const option = document.createElement('option');
       option.value = food.id;
-      option.textContent = `${food.name} (${food.serving} ~ ${food.calories} kcal)`;
+      option.textContent = `${food.name} (${food.serving}g/${food.calories} kcal)`;
       select.appendChild(option);
     });
   });
@@ -276,13 +276,13 @@ function updateCalorieOverview() {
     (acc, item) => {
       const amount = Number(item.amount) || 0;
       const food = item.food || {};
-
+      const serving = Number(food.serving) || 100;
       const calories = Number(food.calories) || 0;
       const protein  = Number(food.protein) || 0;
       const carbs    = Number(food.carbs) || 0;
       const fat      = Number(food.fat) || 0;
 
-      const factor = amount / 100;
+      const factor = amount / serving;
 
       acc.calories += calories * factor;
       acc.protein  += protein * factor;
