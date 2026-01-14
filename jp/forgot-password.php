@@ -7,18 +7,18 @@ if (isset($_SESSION['user_id'])) {
 }
 
 if (!isset($_SESSION['lang'])) {
-    $_SESSION['lang'] = 'en'; // ngôn ngữ mặc định
+    $_SESSION['lang'] = 'jp'; // ngôn ngữ mặc định
 }
 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reset Password - GymExcel</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>パスワード再設定 - GymExcel</title>
+    <link rel="stylesheet" href="../styles.css">
 </head>
 <body class="forgot-page">
     <div class="container">
@@ -30,7 +30,7 @@ if (!isset($_SESSION['lang'])) {
                     </svg>
                 </div>
                 <h1 class="app-name">GymExcel</h1>
-                <p class="tagline">Reset your password</p>
+                <p class="tagline">パスワードを再設定</p>
             </div>
 
             <div class="info-message">
@@ -38,24 +38,24 @@ if (!isset($_SESSION['lang'])) {
                     <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
                     <path d="M12 8V12M12 16H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                 </svg>
-                <p>Enter your email address and we'll send you instructions to reset your password.</p>
+                <p>ご登録のメールアドレスを入力してください。パスワード再設定用の案内をお送りします。</p>
             </div>
 
             <form class="auth-form" id="forgotPasswordForm">
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email">メールアドレス</label>
                     <input type="email" id="email" name="email" placeholder="you@example.com" required>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Send Reset Link</button>
+                <button type="submit" class="btn btn-primary">再設定リンクを送信</button>
 
-                <a href="login.php" class="btn btn-secondary">Back to Login</a>
+                <a href="login.php" class="btn btn-secondary">ログイン画面に戻る</a>
             </form>
 
             <div class="auth-footer">
-                <p>Remember your password? <a href="login.php" class="text-link">Sign in</a></p>
+                <p>パスワードを思い出しましたか？ <a href="login.php" class="text-link">ログイン</a></p>
                 <div>
-                    <p>🌐 <a href="./jp/forgot-password.php" class="text-link">日本語</a> <a href="./vn/forgot-password.php" class="text-link">Tiếng Việt</a></p>             
+                    <p>🌐 <a href="../forgot-password.php" class="text-link">English</a> <a href="../vn/forgot-password.php" class="text-link">Tiếng Việt</a></p>              
                 </div>
             </div>
         </div>

@@ -16,8 +16,8 @@ if (!isset($_SESSION['user_id'])) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/foods.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/foods.css">
 </head>
 <body>
   <header>
@@ -32,7 +32,7 @@ if (!isset($_SESSION['user_id'])) {
         <a href="index.php" class="nav-link">ダッシュボード</a>
         <a href="profile.php" class="nav-link">マイページ</a>
         <a href="foods.php" class="nav-link active">食品</a>
-        <a href="./backend/auth/logout.php" class="nav-link">ログアウト</a>
+        <a href="../backend/auth/logout.php" class="nav-link">ログアウト</a>
       </nav>
     </div>
   </header>

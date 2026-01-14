@@ -7,18 +7,18 @@ if (isset($_SESSION['user_id'])) {
 }
 
 if (!isset($_SESSION['lang'])) {
-    $_SESSION['lang'] = 'en'; // ngôn ngữ mặc định
+    $_SESSION['lang'] = 'vn'; // ngôn ngữ mặc định
 }
 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - GymExcel</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Đăng nhập - GymExcel</title>
+    <link rel="stylesheet" href="../styles.css">
 </head>
 <body class="login-page">
     <div class="container">
@@ -30,7 +30,7 @@ if (!isset($_SESSION['lang'])) {
                     </svg>
                 </div>
                 <h1 class="app-name">GymExcel</h1>
-                <p class="tagline">Welcome back! Ready to crush your goals?</p>
+                <p class="tagline">Chào mừng bạn quay lại! Sẵn sàng chinh phục mục tiêu chưa?</p>
             </div>
 
             <form class="auth-form" id="loginForm">
@@ -40,25 +40,25 @@ if (!isset($_SESSION['lang'])) {
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Password</label>
+                    <label for="password">Mật khẩu</label>
                     <input type="password" id="password" name="password" placeholder="••••••••" required>
                 </div>
 
                 <div class="form-options">
                     <label class="checkbox-label">
                         <input type="checkbox" name="remember">
-                        <span>Remember me</span>
+                        <span>Ghi nhớ đăng nhập</span>
                     </label>
-                    <a href="forgot-password.php" class="text-link">Forgot password?</a>
+                    <a href="forgot-password.php" class="text-link">Quên mật khẩu?</a>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Sign In</button>
+                <button type="submit" class="btn btn-primary">Đăng nhập</button>
             </form>
 
             <div class="auth-footer">
-                <p>Don't have an account? <a href="register.php" class="text-link">Sign up now</a></p>
+                <p>Chưa có tài khoản? <a href="register.php" class="text-link">Đăng ký ngay</a></p>
                 <div>
-                    <p>🌐 <a href="./jp/login.php" class="text-link">日本語</a> <a href="./vn/login.php" class="text-link">Tiếng Việt</a></p>             
+                    <p>🌐 <a href="../jp/login.php" class="text-link">日本語</a> <a href="../login.php" class="text-link">English</a></p>             
                 </div>
             </div>
         </div>

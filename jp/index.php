@@ -8,16 +8,16 @@ if (!isset($_SESSION['user_id'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GymExcel - Dashboard</title>
+  <title>GymExcel - ダッシュボード</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
 </head>
 <body>
   <header>
@@ -29,23 +29,23 @@ if (!isset($_SESSION['user_id'])) {
         GymExcel
       </a>
       <nav>
-        <a href="index.php" class="nav-link active">Dashboard</a>
-        <a href="profile.php" class="nav-link">MySelf</a>
-        <a href="foods.php" class="nav-link">Foods</a>
-        <a href="./backend/auth/logout.php" class="nav-link">Logout</a>
+        <a href="index.php" class="nav-link active">ダッシュボード</a>
+        <a href="profile.php" class="nav-link">マイページ</a>
+        <a href="foods.php" class="nav-link">食品</a>
+        <a href="../backend/auth/logout.php" class="nav-link">ログアウト</a>
       </nav>
     </div>
   </header>
 
   <div class="container">
     <div class="date-navigation">
-      <button class="date-nav-btn" id="prevDay" aria-label="Previous day">
+      <button class="date-nav-btn" id="prevDay" aria-label="前の日">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
-      <div class="current-date" id="currentDate">Today</div>
-      <button class="date-nav-btn" id="nextDay" aria-label="Next day">
+      <div class="current-date" id="currentDate">今日</div>
+      <button class="date-nav-btn" id="nextDay" aria-label="次の日">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -54,17 +54,17 @@ if (!isset($_SESSION['user_id'])) {
 
     <div class="calorie-overview">
       <div class="overview-card target">
-        <div class="overview-label">Daily Target</div>
+        <div class="overview-label">目標カロリー</div>
         <div class="overview-value" id="targetCalories">2000</div>
         <div class="overview-subtitle">kcal</div>
       </div>
       <div class="overview-card consumed">
-        <div class="overview-label">Consumed</div>
+        <div class="overview-label">摂取カロリー</div>
         <div class="overview-value" id="consumedCalories">0</div>
         <div class="overview-subtitle">kcal</div>
       </div>
       <div class="overview-card remaining">
-        <div class="overview-label">Remaining</div>
+        <div class="overview-label">残りカロリー</div>
         <div class="overview-value" id="remainingCalories">2000</div>
         <div class="overview-subtitle">kcal</div>
       </div>
@@ -73,7 +73,7 @@ if (!isset($_SESSION['user_id'])) {
     <div class="card mb-3">
       <div class="progress-section">
         <div class="progress-info">
-          <span>Daily Progress</span>
+          <span>1日の進捗</span>
           <span id="progressPercent">0%</span>
         </div>
         <div class="progress-bar">
@@ -89,16 +89,16 @@ if (!isset($_SESSION['user_id'])) {
             <svg class="meal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M17 21v-2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2M7 21v-2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2M3 10h18M5 10V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            Breakfast
+            朝食
           </div>
-          <div class="meal-total">Total: <span id="breakfastTotal">0 kcal</span></div>
+          <div class="meal-total">合計: <span id="breakfastTotal">0 kcal</span></div>
         </div>
         <div class="food-selector">
           <select class="select-field" id="breakfastFood">
-            <option value="">Select food...</option>
+            <option value="">食品を選択...</option>
           </select>
-          <input type="number" class="input-field" id="breakfastAmount" placeholder="Amount (g)" min="1" value="100">
-          <button class="btn btn-primary" onclick="addFood('breakfast')">Add</button>
+          <input type="number" class="input-field" id="breakfastAmount" placeholder="量 (g)" min="1" value="100">
+          <button class="btn btn-primary" onclick="addFood('breakfast')">追加</button>
         </div>
         <div id="breakfastList"></div>
       </div>
@@ -109,16 +109,16 @@ if (!isset($_SESSION['user_id'])) {
             <svg class="meal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2" stroke-linecap="round"/>
             </svg>
-            Lunch
+            昼食
           </div>
-          <div class="meal-total">Total: <span id="lunchTotal">0 kcal</span></div>
+          <div class="meal-total">合計: <span id="lunchTotal">0 kcal</span></div>
         </div>
         <div class="food-selector">
           <select class="select-field" id="lunchFood">
-            <option value="">Select food...</option>
+            <option value="">食品を選択...</option>
           </select>
-          <input type="number" class="input-field" id="lunchAmount" placeholder="Amount (g)" min="1" value="100">
-          <button class="btn btn-primary" onclick="addFood('lunch')">Add</button>
+          <input type="number" class="input-field" id="lunchAmount" placeholder="量 (g)" min="1" value="100">
+          <button class="btn btn-primary" onclick="addFood('lunch')">追加</button>
         </div>
         <div id="lunchList"></div>
       </div>
@@ -129,59 +129,36 @@ if (!isset($_SESSION['user_id'])) {
             <svg class="meal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M2 12h20M2 7h20M2 17h20" stroke-linecap="round"/>
             </svg>
-            Dinner
+            夕食
           </div>
-          <div class="meal-total">Total: <span id="dinnerTotal">0 kcal</span></div>
+          <div class="meal-total">合計: <span id="dinnerTotal">0 kcal</span></div>
         </div>
         <div class="food-selector">
           <select class="select-field" id="dinnerFood">
-            <option value="">Select food...</option>
+            <option value="">食品を選択...</option>
           </select>
-          <input type="number" class="input-field" id="dinnerAmount" placeholder="Amount (g)" min="1" value="100">
-          <button class="btn btn-primary" onclick="addFood('dinner')">Add</button>
+          <input type="number" class="input-field" id="dinnerAmount" placeholder="量 (g)" min="1" value="100">
+          <button class="btn btn-primary" onclick="addFood('dinner')">追加</button>
         </div>
         <div id="dinnerList"></div>
       </div>
     </div>
 
-    <!-- <div class="totals-card">
-      <h2 class="card-title mb-3" style="color: white;">Daily Totals / 1日の合計</h2>
-      <div class="totals-grid">
-        <div class="total-item">
-          <div class="total-label">Calories</div>
-          <div class="total-value" id="totalCalories">0<span class="total-unit">kcal</span></div>
-        </div>
-        <div class="total-item">
-          <div class="total-label">Protein</div>
-          <div class="total-value" id="totalProtein">0<span class="total-unit">g</span></div>
-        </div>
-        <div class="total-item">
-          <div class="total-label">Carbs</div>
-          <div class="total-value" id="totalCarbs">0<span class="total-unit">g</span></div>
-        </div>
-        <div class="total-item">
-          <div class="total-label">Fat</div>
-          <div class="total-value" id="totalFat">0<span class="total-unit">g</span></div>
-        </div>
-      </div>
-    </div> -->
-
     <div class="card macros-card" id="macrosCard">
         <div class="card-header" style="border-color: rgba(255, 255, 255, 0.2);">
-          <h2 class="card-title" style="color: white;">Daily Totals</h2>
-          <!-- <p class="card-subtitle" style="color: rgba(255, 255, 255, 0.85);"><span id="selectedGoalText"></span></p> -->
+          <h2 class="card-title" style="color: white;">1日の合計</h2>
         </div>
 
         <div class="macros-grid">
           <div class="macro-item">
-            <div class="macro-label">Totals Calories</div>
+            <div class="macro-label">総カロリー</div>
             <div class="macro-value" id="goalCalories">--</div>
             <div class="macro-percentage">kcal</div>
           </div>
 
           <div class="macro-item">
-            <div class="macro-label">Protein</div>
-            <div class="macro-value" ><span id="proteinValue">--</span> / <span id="proteinGoal">--</span></div>
+            <div class="macro-label">タンパク質</div>
+            <div class="macro-value"><span id="proteinValue">--</span> / <span id="proteinGoal">--</span></div>
             <div class="macro-bar">
               <div class="progress-fill protein" id="proteinBar" style="width: 0%"></div>
             </div>
@@ -189,8 +166,8 @@ if (!isset($_SESSION['user_id'])) {
           </div>
 
           <div class="macro-item">
-            <div class="macro-label">Carbs</div>
-            <div class="macro-value" ><span id="carbsValue">--</span> / <span id="carbsGoal">--</span></div>
+            <div class="macro-label">炭水化物</div>
+            <div class="macro-value"><span id="carbsValue">--</span> / <span id="carbsGoal">--</span></div>
             <div class="macro-bar">
               <div class="progress-fill carbs" id="carbsBar" style="width: 0%"></div>
             </div>
@@ -198,8 +175,8 @@ if (!isset($_SESSION['user_id'])) {
           </div>
 
           <div class="macro-item">
-            <div class="macro-label">Fat</div>
-            <div class="macro-value" ><span id="fatValue">--</span> / <span id="fatGoal">--</span></div>
+            <div class="macro-label">脂質</div>
+            <div class="macro-value"><span id="fatValue">--</span> / <span id="fatGoal">--</span></div>
             <div class="macro-bar">
               <div class="progress-fill fat" id="fatBar" style="width: 0%"></div>
             </div>
