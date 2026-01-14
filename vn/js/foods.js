@@ -66,7 +66,7 @@ function renderFoods() {
         <div class="food-card-header">
           <div>
             <div class="food-card-title">${food.name}</div>
-            <div class="food-card-serving">per ${food.serving}</div>
+            <div class="food-card-serving">mỗi ${food.serving}g</div>
           </div>
           <div class="food-card-actions">
             <span class="food-card-category ${categoryClass}">

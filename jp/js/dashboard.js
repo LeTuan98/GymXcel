@@ -30,12 +30,12 @@ function populateFoodSelectors() {
     const select = document.getElementById(`${meal}Food`);
     if (!select) return;
 
-    select.innerHTML = '<option value="">Select food...</option>';
+    select.innerHTML = '<option value="">食品を選択...</option>';
 
     FOODS_DATA.forEach(food => {
       const option = document.createElement('option');
       option.value = food.id;
-      option.textContent = `${food.name} (${food.calories} kcal)`;
+      option.textContent = `${food.name} (${food.serving} ~ ${food.calories} kcal)`;
       select.appendChild(option);
     });
   });
@@ -190,7 +190,7 @@ function renderMeal(meal) {
   const items = currentMeals[meal];
 
   if (!items || items.length === 0) {
-    list.innerHTML = `<p style="text-align:center;color:#999">No items</p>`;
+    list.innerHTML = `<p style="text-align:center;color:#999">データがありません</p>`;
     totalEl.textContent = '0 kcal';
     return;
   }
@@ -376,7 +376,7 @@ if (document.getElementById('currentDate')) {
       initDashboard();              // 3️⃣ render meal
     } catch (e) {
       console.error(e);
-      alert('Không thể tải danh sách thực phẩm');
+      alert('食品リストを読み込めません');
     }
   });
 }

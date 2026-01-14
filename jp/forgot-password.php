@@ -7,7 +7,7 @@ if (isset($_SESSION['user_id'])) {
 }
 
 if (!isset($_SESSION['lang'])) {
-    $_SESSION['lang'] = 'jp'; // ngôn ngữ mặc định
+    $_SESSION['lang'] = 'ja'; // ngôn ngữ mặc định
 }
 
 ?>

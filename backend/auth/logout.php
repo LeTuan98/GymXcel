@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+$lang = 'vi';
+
+if (isset($_SESSION['lang']) && in_array($_SESSION['lang'], ['vi', 'en', 'ja'])) {
+    $lang = $_SESSION['lang'];
+}
+
 // Xoá toàn bộ session
 $_SESSION = [];
 
@@ -22,5 +28,13 @@ if (ini_get("session.use_cookies")) {
 }
 
 // Quay về trang login
-header('Location: ../../login.php');
-exit;
+if ($lang === 'vi') {
+    header('Location: ../../vi/login.php');
+    exit;
+} elseif ($lang === 'ja') {
+    header('Location: ../../jp/login.php');
+    exit;
+} else {
+    header('Location: ../../login.php');
+    exit;
+}

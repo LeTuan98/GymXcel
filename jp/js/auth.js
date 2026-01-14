@@ -49,7 +49,7 @@ async function handleLogin(e) {
         showSuccessMessage(user_name + 'さん、おかえり!');
         setTimeout(() => {
             window.location.href = 'index.php';
-        }, 2000);
+        }, 1500);
 
     } catch (err) {
         hideLoading(btn, 'Sign In');

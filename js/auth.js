@@ -46,10 +46,10 @@ async function handleLogin(e) {
         }
 
         let user_name = data.user.name;
-        showSuccessMessage(user_name + 'さん、おかえり!');
+        showSuccessMessage(user_name + ' Welcome back!');
         setTimeout(() => {
             window.location.href = 'index.php';
-        }, 2000);
+        }, 1500);
 
     } catch (err) {
         hideLoading(btn, 'Sign In');
@@ -106,7 +106,7 @@ async function handleRegister(e) {
             return;
         }
         let user_name = data.user.name;
-        showSuccessMessage( user_name+ 'さん、こんにちは、これからよろしくね!');
+        showSuccessMessage( user_name+ ' Hello! Nice to meet you, I look forward to working with you!');
         setTimeout(() => {
             window.location.href = 'profile.php';
         }, 3000);

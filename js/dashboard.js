@@ -35,7 +35,7 @@ function populateFoodSelectors() {
     FOODS_DATA.forEach(food => {
       const option = document.createElement('option');
       option.value = food.id;
-      option.textContent = `${food.name} (${food.calories} kcal)`;
+      option.textContent = `${food.name} (${food.serving} ~ ${food.calories} kcal)`;
       select.appendChild(option);
     });
   });
@@ -376,7 +376,7 @@ if (document.getElementById('currentDate')) {
       initDashboard();              // 3️⃣ render meal
     } catch (e) {
       console.error(e);
-      alert('Không thể tải danh sách thực phẩm');
+      alert('Unable to load food list');
     }
   });
 }

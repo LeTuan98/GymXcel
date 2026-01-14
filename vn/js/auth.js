@@ -46,10 +46,10 @@ async function handleLogin(e) {
         }
 
         let user_name = data.user.name;
-        showSuccessMessage(user_name + 'さん、おかえり!');
+        showSuccessMessage(user_name + '! Chào mừng bạn về nhà!');
         setTimeout(() => {
             window.location.href = 'index.php';
-        }, 2000);
+        }, 1500);
 
     } catch (err) {
         hideLoading(btn, 'Sign In');
@@ -106,7 +106,7 @@ async function handleRegister(e) {
             return;
         }
         let user_name = data.user.name;
-        showSuccessMessage( user_name+ 'さん、こんにちは、これからよろしくね!');
+        showSuccessMessage( user_name+ '! Chào bạn, từ bây giờ mong được giúp đỡ nhé!');
         setTimeout(() => {
             window.location.href = 'profile.php';
         }, 3000);
