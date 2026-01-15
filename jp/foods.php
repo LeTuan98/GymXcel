@@ -101,12 +101,12 @@ if (!isset($_SESSION['user_id'])) {
 
         <label>タンパク質 (g)</label>
         <input type="number" id="foodProtein" min="0" required>
-
-        <label>炭水化物 (g)</label>
-        <input type="number" id="foodCarbs" min="0" required>
-
+       
         <label>脂質 (g)</label>
         <input type="number" id="foodFat" min="0" required>
+        
+        <label>炭水化物 (g)</label>
+        <input type="number" id="foodCarbs" min="0" required>
 
         <div class="modal-actions">
           <button class="btn-cancel" type="button" onclick="closeAddFood()">キャンセル</button>

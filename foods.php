@@ -102,11 +102,11 @@ if (!isset($_SESSION['user_id'])) {
         <label>Protein (g)</label>
         <input type="number" id="foodProtein" min="0" required>
 
-        <label>Carbohydrates (g)</label>
-        <input type="number" id="foodCarbs" min="0" required>
-
         <label>Fat (g)</label>
         <input type="number" id="foodFat" min="0" required>
+
+        <label>Carbohydrates (g)</label>
+        <input type="number" id="foodCarbs" min="0" required>
 
         <div class="modal-actions">
           <button class="btn-cancel" type="button" onclick="closeAddFood()">Cancel</button>

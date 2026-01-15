@@ -101,13 +101,13 @@ if (!isset($_SESSION['user_id'])) {
 
         <label>Protein (g)</label>
         <input type="number" id="foodProtein" min="0" required>
-
-        <label>Tinh bột (g)</label>
-        <input type="number" id="foodCarbs" min="0" required>
-
+        
         <label>Chất béo (g)</label>
         <input type="number" id="foodFat" min="0" required>
-
+        
+        <label>Tinh bột (g)</label>
+        <input type="number" id="foodCarbs" min="0" required>
+        
         <div class="modal-actions">
           <button class="btn-cancel" type="button" onclick="closeAddFood()">Hủy</button>
           <button class="btn-primary btn-lg" id="save_form" type="submit">Thêm</button>
